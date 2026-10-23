@@ -1,0 +1,29 @@
+---
+const nav = [
+  { href: '/tools/', label: 'Tools' },
+  { href: '/guides/', label: 'Guides' },
+  { href: '/about/', label: 'About' },
+  { href: '/contact/', label: 'Contact' },
+];
+---
+<header class="border-b border-gray-200 bg-white sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+    <a href="/" class="font-bold text-xl text-brand-600">VisaPath.pk</a>
+    <nav class="hidden md:flex gap-6">
+      {nav.map((i) => (
+        <a href={i.href} class="text-gray-700 hover:text-brand-600 font-medium">{i.label}</a>
+      ))}
+    </nav>
+    <button class="md:hidden" aria-label="Menu" id="menu-btn">☰</button>
+  </div>
+  <nav id="mobile-nav" class="hidden md:hidden border-t border-gray-200 px-4 py-3 space-y-2">
+    {nav.map((i) => (
+      <a href={i.href} class="block py-2 text-gray-700">{i.label}</a>
+    ))}
+  </nav>
+</header>
+<script>
+  document.getElementById('menu-btn')?.addEventListener('click', () => {
+    document.getElementById('mobile-nav')?.classList.toggle('hidden');
+  });
+</script>

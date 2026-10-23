@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; font-family: system-ui, -apple-system, sans-serif; }
+.prose a { color: #1d4ed8; text-decoration: underline; }
+.prose h2 { margin-top: 2rem; font-size: 1.75rem; font-weight: 700; }
+.prose h3 { margin-top: 1.5rem; font-size: 1.35rem; font-weight: 600; }
+.prose p { line-height: 1.75; margin: 1rem 0; }
+.prose ul { list-style: disc; padding-left: 1.5rem; margin: 1rem 0; }

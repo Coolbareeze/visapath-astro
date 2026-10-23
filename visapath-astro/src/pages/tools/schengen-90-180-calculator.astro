@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SchengenCalculator from '../../components/tools/SchengenCalculator.jsx';
+
+const appSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Schengen 90/180 Calculator',
+  applicationCategory: 'TravelApplication',
+  operatingSystem: 'Any',
+  offers: { '@type': 'Offer', price: '0' },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is the Schengen 90/180 rule?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Short-stay visitors may stay a maximum of 90 days within any rolling 180-day period across all 29 Schengen countries combined.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does the 180 days reset?',
+      acceptedAnswer: { '@type': 'Answer', text: 'No. The 180-day period is a continuously moving window.' },
+    },
+  ],
+};
+---
+<BaseLayout
+  title="Schengen 90/180 Day Calculator — Free Visa Day Tracker"
+  description="Free Schengen 90/180 calculator for Pakistani travelers. Track days across all 29 Schengen countries with rolling 180-day window."
+  schema={[appSchema, faqSchema]}
+>
+  <article class="max-w-3xl mx-auto px-4 py-10">
+    <nav class="text-sm text-gray-500 mb-4">
+      <a href="/" class="hover:text-brand-600">Home</a> ›
+      <a href="/tools/" class="hover:text-brand-600">Tools</a> ›
+      <span>Schengen Calculator</span>
+    </nav>
+
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">Schengen 90/180 Day Calculator</h1>
+    <p class="text-gray-700 mb-8">
+      Track how many days you have spent in the Schengen Area within a rolling 180-day window. Add each trip's entry and exit dates below.
+    </p>
+
+    <SchengenCalculator client:load />
+
+    <section class="prose max-w-none mt-12">
+      <h2>Understanding the Schengen 90/180 Rule</h2>
+      <p>
+        If you hold a Pakistani passport and travel to Europe on a short-stay Schengen visa (Type C), you can spend a maximum of <strong>90 days within any rolling 180-day period</strong>. The 90 days are counted across all 29 Schengen member countries combined — not per country.
+      </p>
+
+      <h3>How the Rolling Window Works</h3>
+      <p>
+        The 180-day period is not fixed. On any given day, border officials look back 180 days from that date and count how many days you were inside the Schengen Area. If the total exceeds 90, you are in overstay.
+      </p>
+
+      <h3>Which Countries Count?</h3>
+      <p>
+        As of 2026, the Schengen Area includes 29 countries: Austria, Belgium, Bulgaria, Croatia, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, Italy, Latvia, Liechtenstein, Lithuania, Luxembourg, Malta, Netherlands, Norway, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden, and Switzerland.
+      </p>
+
+      <h3>What Counts as a Day</h3>
+      <p>
+        Both your entry day and exit day count as full days — even if you only stay a few hours.
+      </p>
+
+      <h3>Consequences of Overstay</h3>
+      <p>
+        Overstaying your Schengen allowance can result in deportation, fines, a ban from re-entering Schengen for up to 5 years, and permanent record on your visa history — which affects future UK, US, Canada, and Australia visa applications.
+      </p>
+    </section>
+  </article>
+</BaseLayout>
