@@ -6,12 +6,17 @@ const tools = [
   { href: '/tools/schengen-90-180-calculator/', title: 'Schengen 90/180 Calculator', desc: 'Track your Schengen days with rolling 180-day window.' },
   { href: '/tools/passport-validity-checker/', title: 'Passport Validity Checker', desc: 'Check the 6-month rule for your destination.' },
   { href: '/tools/document-checklist-generator/', title: 'Document Checklist', desc: 'Interactive checklist for every major visa type.' },
+  { href: '/tools/pkr-currency-converter/', title: 'Currency Converter', desc: '17 currencies for travel budgeting.' },
+  { href: '/tools/visa-interview-questions/', title: 'Interview Questions', desc: 'Practice visa interview questions.' },
 ];
 
 const guides = [
-  { href: '/guides/uk-student-visa-pakistan/', title: 'UK Student Visa from Pakistan — Complete Guide' },
-  { href: '/guides/us-b1-b2-visa-pakistan/', title: 'US B1/B2 Visa from Pakistan — Step by Step' },
-  { href: '/guides/schengen-visa-pakistanis/', title: 'Schengen Visa for Pakistanis — Country Comparison' },
+  { href: '/guides/uk-student-visa-pakistan/', title: 'UK Student Visa from Pakistan' },
+  { href: '/guides/us-b1-b2-visa-pakistan/', title: 'US B1/B2 Visa from Pakistan' },
+  { href: '/guides/schengen-visa-pakistanis/', title: 'Schengen Visa — Country Comparison' },
+  { href: '/guides/canada-visitor-visa-pakistan/', title: 'Canada Visitor Visa from Pakistan' },
+  { href: '/guides/uae-visa-types-pakistan/', title: 'UAE Visa — All Types Explained' },
+  { href: '/guides/thailand-dtv-visa-pakistan/', title: 'Thailand DTV Visa for Pakistanis' },
 ];
 
 const schema = {
@@ -24,7 +29,7 @@ const schema = {
 ---
 <BaseLayout
   title="VisaPath.pk — Free Visa & Travel Tools for Pakistanis"
-  description="Free visa calculators, document checklists, and country guides for Pakistani travelers. UK, US, Canada, Schengen, UAE and more."
+  description="Free visa calculators, document checklists, and country guides for Pakistani travelers. UK, US, Canada, Schengen, UAE, Turkey, Thailand."
   schema={schema}
 >
   <section class="bg-gradient-to-br from-brand-50 to-white py-16">
@@ -33,17 +38,22 @@ const schema = {
         Free Visa & Travel Tools for Pakistanis
       </h1>
       <p class="text-lg text-gray-700 mb-8">
-        Calculate visa fees, track Schengen days, check passport validity, and get country-specific guides — all free.
+        9 calculators and 8 country guides. Visa fees, Schengen days, passport validity, interview questions — all free, built for Pakistani passport holders.
       </p>
-      <a href="/tools/" class="inline-block bg-brand-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-brand-700">
-        Browse All Tools
-      </a>
+      <div class="flex gap-4 justify-center flex-wrap">
+        <a href="/tools/" class="inline-block bg-brand-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-brand-700">
+          Browse Tools
+        </a>
+        <a href="/guides/" class="inline-block bg-white border border-brand-600 text-brand-600 px-8 py-3 rounded-lg font-semibold hover:bg-brand-50">
+          Read Guides
+        </a>
+      </div>
     </div>
   </section>
 
   <section class="py-16 max-w-6xl mx-auto px-4">
     <h2 class="text-3xl font-bold mb-8">Popular Tools</h2>
-    <div class="grid md:grid-cols-2 gap-6">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       {tools.map((t) => (
         <a href={t.href} class="block border border-gray-200 rounded-lg p-6 hover:border-brand-500 hover:shadow-md transition">
           <h3 class="font-semibold text-lg mb-2 text-brand-600">{t.title}</h3>
@@ -51,17 +61,23 @@ const schema = {
         </a>
       ))}
     </div>
+    <div class="text-center mt-8">
+      <a href="/tools/" class="text-brand-600 font-medium hover:underline">View all 9 tools →</a>
+    </div>
   </section>
 
   <section class="py-16 bg-gray-50">
     <div class="max-w-6xl mx-auto px-4">
       <h2 class="text-3xl font-bold mb-8">Latest Guides</h2>
-      <div class="space-y-4">
+      <div class="grid md:grid-cols-2 gap-4">
         {guides.map((g) => (
           <a href={g.href} class="block bg-white border border-gray-200 rounded-lg p-5 hover:border-brand-500 hover:shadow-md transition">
-            <h3 class="font-semibold text-lg text-brand-600">{g.title}</h3>
+            <h3 class="font-semibold text-brand-600">{g.title}</h3>
           </a>
         ))}
+      </div>
+      <div class="text-center mt-8">
+        <a href="/guides/" class="text-brand-600 font-medium hover:underline">View all 8 guides →</a>
       </div>
     </div>
   </section>

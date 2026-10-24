@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import InterviewQuestions from '../../components/tools/InterviewQuestions.jsx';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Visa Interview Question Practice',
+  applicationCategory: 'TravelApplication',
+  operatingSystem: 'Any',
+  offers: { '@type': 'Offer', price: '0' },
+};
+---
+<BaseLayout
+  title="Visa Interview Questions — US, UK, Canada, Schengen for Pakistanis"
+  description="Practice common visa interview questions. Specific questions for US B1/B2, UK Student, UK Visitor, Canada, Schengen, and Australia visas."
+  schema={schema}
+>
+  <article class="max-w-3xl mx-auto px-4 py-10">
+    <nav class="text-sm text-gray-500 mb-4">
+      <a href="/" class="hover:text-brand-600">Home</a> ›
+      <a href="/tools/" class="hover:text-brand-600">Tools</a> ›
+      <span>Interview Questions</span>
+    </nav>
+
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">Visa Interview Question Practice</h1>
+    <p class="text-gray-700 mb-8">
+      Real interview questions asked at embassies for common visa categories. Practice answering out loud.
+    </p>
+
+    <InterviewQuestions client:load />
+
+    <section class="prose max-w-none mt-12">
+      <h2>Interview Preparation for Pakistanis</h2>
+      <p>
+        Most visa refusals happen in the interview, not the paperwork. The officer has 2–5 minutes to decide. Clear, honest, confident answers make the difference.
+      </p>
+
+      <h2>Universal Rules</h2>
+      <ul>
+        <li><strong>Keep answers short.</strong> One or two sentences. Don't ramble or volunteer extra information.</li>
+        <li><strong>Be honest.</strong> Officers detect lies through follow-up questions. Lying can result in permanent bans.</li>
+        <li><strong>Make eye contact.</strong> Avoid looking down or fidgeting.</li>
+        <li><strong>Know your facts.</strong> Dates, amounts, addresses, names — don't fumble.</li>
+        <li><strong>Don't memorise scripts.</strong> Rehearsed-sounding answers trigger suspicion.</li>
+        <li><strong>Speak clearly in English.</strong> If English is weak, ask for Urdu/Hindi interpretation (available at some posts).</li>
+        <li><strong>Avoid "I don't know" when it looks evasive.</strong> If genuinely unsure, say so briefly and move on.</li>
+      </ul>
+
+      <h2>What Officers Are Really Testing</h2>
+      <h3>For Tourist Visas: Intent to Return</h3>
+      <p>
+        The core question behind every tourist visa interview is: <em>will this person go home?</em> They look for strong ties to Pakistan — job, property, family dependants, business.
+      </p>
+
+      <h3>For Student Visas: Genuine Student Status</h3>
+      <p>
+        The officer wants to know: <em>is this a real student, or is education a cover for immigration?</em> They test if you know your course, your university, your long-term plan.
+      </p>
+
+      <h3>For Business Visas: Legitimate Purpose</h3>
+      <p>
+        They verify: <em>is there a real company inviting you, with a real reason?</em> Vague answers about "meetings" raise flags.
+      </p>
+
+      <h3>For Work Visas: Qualifications and Sponsor Legitimacy</h3>
+      <p>
+        The officer checks: <em>are you actually qualified for this job, and does the sponsor really need you?</em>
+      </p>
+
+      <h2>Red Flags That Trigger Refusals</h2>
+      <ul>
+        <li>Vague answers about trip purpose</li>
+        <li>Inconsistent travel dates vs. hotel bookings vs. return ticket</li>
+        <li>Family already in destination country ("marriage of convenience" fear)</li>
+        <li>Sudden large deposits before application</li>
+        <li>Employment letter doesn't match stated job</li>
+        <li>Previous overstays or deportations not disclosed</li>
+        <li>Social media showing intent to migrate</li>
+        <li>Too much nervousness, too little nervousness</li>
+      </ul>
+
+      <h2>What to Carry to the Interview</h2>
+      <ul>
+        <li>Original passport + all previous passports</li>
+        <li>Appointment confirmation</li>
+        <li>DS-160 / application confirmation</li>
+        <li>Fee receipts</li>
+        <li>Supporting documents in a clear folder — officer may ask</li>
+        <li>No electronics (phones, smartwatches, USB drives) — these are banned at US and most Western embassies</li>
+      </ul>
+
+      <h2>Dress Code</h2>
+      <p>
+        Smart casual at minimum. Men: shirt tucked in, trousers, closed shoes. Women: modest, professional. Avoid very casual (T-shirts, jeans, sandals) or very formal (3-piece suit looks nervous).
+      </p>
+
+      <h2>If Asked About Previous Refusals</h2>
+      <p>
+        <strong>Always disclose</strong>. Officers can see your history. Pretending it didn't happen leads to automatic refusal. Explain briefly what changed since the refusal — new job, married, new travel history, financial improvement.
+      </p>
+
+      <h2>After the Interview</h2>
+      <p>
+        If approved, the officer keeps your passport (visa is affixed and returned via courier). If refused, you get an explanation code and your passport back immediately.
+      </p>
+
+      <h2>Related Resources</h2>
+      <p>
+        <a href="/guides/us-b1-b2-visa-pakistan/">US B1/B2 Guide</a> ·
+        <a href="/guides/uk-student-visa-pakistan/">UK Student Guide</a> ·
+        <a href="/tools/document-checklist-generator/">Document Checklist</a>
+      </p>
+    </section>
+  </article>
+</BaseLayout>

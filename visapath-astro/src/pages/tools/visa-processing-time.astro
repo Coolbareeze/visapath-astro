@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProcessingTimeLookup from '../../components/tools/ProcessingTimeLookup.jsx';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Visa Processing Time Lookup',
+  applicationCategory: 'TravelApplication',
+  operatingSystem: 'Any',
+  offers: { '@type': 'Offer', price: '0' },
+};
+---
+<BaseLayout
+  title="Visa Processing Times from Pakistan — Standard, Priority, Super Priority"
+  description="Current visa processing times for UK, US, Canada, Schengen, UAE, Turkey, Thailand, Malaysia and Saudi Arabia from Pakistan."
+  schema={schema}
+>
+  <article class="max-w-3xl mx-auto px-4 py-10">
+    <nav class="text-sm text-gray-500 mb-4">
+      <a href="/" class="hover:text-brand-600">Home</a> ›
+      <a href="/tools/" class="hover:text-brand-600">Tools</a> ›
+      <span>Visa Processing Time</span>
+    </nav>
+
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">Visa Processing Time Lookup</h1>
+    <p class="text-gray-700 mb-8">
+      Approximate processing times for visas from Pakistan — standard, priority, and super priority options where available.
+    </p>
+
+    <ProcessingTimeLookup client:load />
+
+    <section class="prose max-w-none mt-12">
+      <h2>How Processing Times Work</h2>
+      <p>
+        Processing time typically starts <strong>from the day your biometrics are submitted</strong>, not the day you pay the fee. Some embassies use "working days" (Mon–Fri), others use "calendar days."
+      </p>
+
+      <h2>When to Apply</h2>
+      <p>
+        Rule of thumb: submit your application <strong>at least 2x the standard processing time</strong> before your travel date. This buffers for unexpected delays, Request For Information (RFI) correspondence, or additional document requests.
+      </p>
+      <ul>
+        <li>Short-stay / tourist visa: apply 4–8 weeks before travel</li>
+        <li>Student visa: apply 3+ months before course starts</li>
+        <li>Work visa: apply 2–6 months ahead</li>
+        <li>Family / settlement: apply 6+ months before intended move</li>
+      </ul>
+
+      <h2>Why Processing Times Vary</h2>
+      <p>Factors that extend processing beyond standard times:</p>
+      <ul>
+        <li><strong>Seasonal spikes</strong> — summer applications take longer across all countries</li>
+        <li><strong>Supporting document issues</strong> — if the officer requests more info (RFI), the clock may pause</li>
+        <li><strong>Security checks</strong> — some backgrounds trigger additional review</li>
+        <li><strong>Volume at your specific VAC</strong> — Islamabad vs Karachi vs Lahore workloads differ</li>
+        <li><strong>Policy changes</strong> — new regulations slow processing while staff adapt</li>
+      </ul>
+
+      <h2>Priority Services</h2>
+      <h3>UK Priority & Super Priority</h3>
+      <p>
+        Available at UKVCAS centres in Islamabad, Lahore, and Karachi. Priority gets you a decision in 5 working days (£500 extra); Super Priority in 1 working day (£1,000). Not always available for all categories.
+      </p>
+
+      <h3>US Expedite Request</h3>
+      <p>
+        The US doesn't offer paid priority processing. You can request an expedited interview appointment if you have a documented emergency (medical, urgent business, close family bereavement). Not guaranteed.
+      </p>
+
+      <h3>Schengen Fast-Track</h3>
+      <p>
+        Some Schengen countries offer VIP or fast-track services through VFS Global for an extra fee — this expedites appointment booking and document review, but not the embassy's actual decision time.
+      </p>
+
+      <h2>What Delays an Application</h2>
+      <ul>
+        <li>Missing documents at submission (requires RFI, clock pauses)</li>
+        <li>Blurred document scans in online application</li>
+        <li>Translation issues on Urdu documents</li>
+        <li>Name mismatches between passport, CNIC, and other IDs</li>
+        <li>Incomplete travel itinerary or missing hotel bookings</li>
+        <li>Previous visa refusals not disclosed</li>
+      </ul>
+
+      <h2>Tracking Your Application</h2>
+      <p>
+        Each visa application centre provides a reference number. Track at:
+      </p>
+      <ul>
+        <li><strong>UK:</strong> UKVCAS / VFS tracking page</li>
+        <li><strong>US:</strong> ceac.state.gov → "Check my visa application status"</li>
+        <li><strong>Canada:</strong> IRCC online account</li>
+        <li><strong>Schengen:</strong> VFS Global / TLScontact / BLS International tracking</li>
+      </ul>
+    </section>
+  </article>
+</BaseLayout>

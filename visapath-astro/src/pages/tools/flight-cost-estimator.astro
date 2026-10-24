@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FlightCostEstimator from '../../components/tools/FlightCostEstimator.jsx';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Flight Cost Estimator',
+  applicationCategory: 'TravelApplication',
+  operatingSystem: 'Any',
+  offers: { '@type': 'Offer', price: '0' },
+};
+---
+<BaseLayout
+  title="Flight Cost Estimator from Pakistan — KHI, LHE, ISB Return Fares"
+  description="Estimate return flight costs from Karachi, Lahore, Islamabad to Dubai, London, New York, Istanbul, Bangkok and 20+ routes."
+  schema={schema}
+>
+  <article class="max-w-3xl mx-auto px-4 py-10">
+    <nav class="text-sm text-gray-500 mb-4">
+      <a href="/" class="hover:text-brand-600">Home</a> ›
+      <a href="/tools/" class="hover:text-brand-600">Tools</a> ›
+      <span>Flight Cost Estimator</span>
+    </nav>
+
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">Flight Cost Estimator</h1>
+    <p class="text-gray-700 mb-8">
+      Rough return fare estimates from Pakistan to popular destinations. Factors in season, cabin class, and booking window.
+    </p>
+
+    <FlightCostEstimator client:load />
+
+    <section class="prose max-w-none mt-12">
+      <h2>How to Get Better Fares from Pakistan</h2>
+
+      <h3>Book 2–3 Months Ahead for Long-Haul</h3>
+      <p>
+        Fares to Europe, North America, and Australia are typically cheapest when booked 8–12 weeks out. Last-minute bookings (within 2 weeks) can cost 50% more. For Gulf and Southeast Asia, the window is tighter — 4–8 weeks ahead.
+      </p>
+
+      <h3>Fly Mid-Week</h3>
+      <p>
+        Tuesday and Wednesday departures are consistently cheaper than Friday–Sunday. For returns, mid-week is also better. Return on a Tuesday rather than Monday to save noticeably.
+      </p>
+
+      <h3>Use Multi-City or Open-Jaw</h3>
+      <p>
+        Flying into one European city and out of another can be cheaper than return to the same city — plus you see more. Skyscanner "Everywhere" search is useful for this.
+      </p>
+
+      <h3>Consider Gulf Hubs</h3>
+      <p>
+        Dubai, Abu Dhabi, Doha are major hubs with competitive fares to Europe and the Americas. Pakistani travellers often save by taking a cheap Gulf-sector flight (Emirates, Etihad, Qatar, Saudia) and booking separately.
+      </p>
+
+      <h3>Peak Season Awareness</h3>
+      <p>
+        Fares spike for:
+      </p>
+      <ul>
+        <li><strong>May–August:</strong> school holidays, European summer</li>
+        <li><strong>Hajj season (May–June):</strong> Jeddah/Madinah fares double</li>
+        <li><strong>December:</strong> Christmas, winter holidays, Umrah peak</li>
+        <li><strong>Eid holidays:</strong> inflated Pakistan ↔ Gulf fares for 1–2 weeks</li>
+      </ul>
+
+      <h2>Direct vs Connecting Flights</h2>
+      <p>
+        Pakistan has limited direct long-haul connectivity. Most trips to Europe/North America require a connection in the Gulf. Common connecting hubs:
+      </p>
+      <ul>
+        <li><strong>Dubai (DXB):</strong> Emirates, flydubai — most frequent connections globally</li>
+        <li><strong>Doha (DOH):</strong> Qatar Airways — excellent Europe/USA network</li>
+        <li><strong>Abu Dhabi (AUH):</strong> Etihad Airways — US pre-clearance for Americans</li>
+        <li><strong>Istanbul (IST):</strong> Turkish Airlines — vast network, often cheaper</li>
+        <li><strong>Riyadh/Jeddah (RUH/JED):</strong> Saudia — strong Africa/Americas</li>
+      </ul>
+
+      <h2>Pakistani Airlines on International Routes</h2>
+      <ul>
+        <li><strong>PIA (Pakistan International Airlines):</strong> Gulf, UK (Manchester, Birmingham), Toronto, select other long-haul</li>
+        <li><strong>Airblue:</strong> Gulf and Saudi Arabia</li>
+        <li><strong>Serene Air / AirSial / Fly Jinnah:</strong> primarily domestic + Gulf</li>
+      </ul>
+
+      <h2>Baggage Allowance Tips</h2>
+      <ul>
+        <li><strong>Gulf carriers to USA/Canada:</strong> typically 2 x 23kg checked bags (46kg total)</li>
+        <li><strong>Gulf carriers to Europe/UK:</strong> often just 1 x 30kg or 2 x 23kg depending on class</li>
+        <li><strong>Economy to Saudi/UAE from Pakistan:</strong> usually 30kg total</li>
+        <li><strong>Low-cost (flydubai, Airblue):</strong> 20kg standard, extras cost extra</li>
+      </ul>
+      <p>
+        Always check <em>your specific ticket</em> — allowances vary by fare class even within the same airline.
+      </p>
+
+      <h2>Booking Platforms Pakistani Travellers Use</h2>
+      <ul>
+        <li><strong>Google Flights:</strong> best for comparing airlines quickly</li>
+        <li><strong>Skyscanner:</strong> flexible dates, nearby airports</li>
+        <li><strong>Booking.com / Kayak:</strong> package deals with hotels</li>
+        <li><strong>Direct airline website:</strong> often best for changes/refunds</li>
+        <li><strong>Local travel agents:</strong> good for Hajj, Umrah, group bookings</li>
+      </ul>
+
+      <h2>Related Tools</h2>
+      <p>
+        <a href="/tools/pkr-currency-converter/">Currency Converter</a> ·
+        <a href="/tools/travel-insurance-calculator/">Insurance Calculator</a> ·
+        <a href="/tools/passport-validity-checker/">Passport Validity Checker</a>
+      </p>
+    </section>
+  </article>
+</BaseLayout>

@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TravelInsuranceCalculator from '../../components/tools/TravelInsuranceCalculator.jsx';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Travel Insurance Calculator',
+  applicationCategory: 'TravelApplication',
+  operatingSystem: 'Any',
+  offers: { '@type': 'Offer', price: '0' },
+};
+---
+<BaseLayout
+  title="Travel Insurance Cost Calculator for Pakistani Travelers"
+  description="Estimate travel insurance cost by destination, trip length, age, and coverage level. Schengen €30,000 minimum and higher plans compared."
+  schema={schema}
+>
+  <article class="max-w-3xl mx-auto px-4 py-10">
+    <nav class="text-sm text-gray-500 mb-4">
+      <a href="/" class="hover:text-brand-600">Home</a> ›
+      <a href="/tools/" class="hover:text-brand-600">Tools</a> ›
+      <span>Travel Insurance Calculator</span>
+    </nav>
+
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">Travel Insurance Calculator</h1>
+    <p class="text-gray-700 mb-8">
+      Rough cost estimate for travel insurance by trip length, destination, age, and coverage level.
+    </p>
+
+    <TravelInsuranceCalculator client:load />
+
+    <section class="prose max-w-none mt-12">
+      <h2>Travel Insurance Basics for Pakistanis</h2>
+      <p>
+        Travel insurance covers unexpected costs during international travel — medical treatment, hospitalisation, trip cancellation, lost baggage, personal liability. For Pakistani passport holders, it's often mandatory for visa approval and strongly recommended regardless.
+      </p>
+
+      <h2>When Insurance Is Mandatory</h2>
+      <ul>
+        <li><strong>Schengen Visa:</strong> €30,000 minimum medical coverage, valid in all Schengen states</li>
+        <li><strong>Russia Visa:</strong> required minimum coverage specified by consulate</li>
+        <li><strong>Cuba:</strong> mandatory insurance for all visitors</li>
+        <li><strong>Some tour operators:</strong> require insurance as condition of booking</li>
+      </ul>
+
+      <h2>What Should Be Covered</h2>
+      <h3>Medical Emergency</h3>
+      <p>
+        The most important coverage. Hospital stays in Europe and North America can cost $5,000–$50,000 per day. For USA/Canada, insurers recommend $500,000+ minimum. For Europe, Asia, Middle East, $100,000–$250,000 is usually sufficient.
+      </p>
+
+      <h3>Medical Evacuation / Repatriation</h3>
+      <p>
+        Being flown home with medical escort can cost $100,000+. This is almost always included in good policies.
+      </p>
+
+      <h3>Trip Cancellation and Interruption</h3>
+      <p>
+        Reimburses non-refundable costs if you cancel for covered reasons (illness, bereavement, natural disaster, political unrest at destination).
+      </p>
+
+      <h3>Baggage Loss / Delay</h3>
+      <p>
+        Compensation if airlines lose or delay your checked bags. Usually $500–$2,000 per person.
+      </p>
+
+      <h3>Personal Liability</h3>
+      <p>
+        Covers legal costs if you accidentally injure someone or damage property. Especially useful for adventure travel, skiing, rentals.
+      </p>
+
+      <h2>What's Usually NOT Covered</h2>
+      <ul>
+        <li>Pre-existing medical conditions (unless disclosed and surcharge paid)</li>
+        <li>Pregnancy complications (after certain week)</li>
+        <li>Mental health treatment</li>
+        <li>Injuries from extreme sports (skydiving, mountaineering above certain altitude)</li>
+        <li>Alcohol or drug-related incidents</li>
+        <li>Acts of war or terrorism in high-risk zones</li>
+        <li>Travel against government advisory</li>
+      </ul>
+
+      <h2>Buying Travel Insurance from Pakistan</h2>
+      <h3>Local Providers</h3>
+      <ul>
+        <li>Jubilee General Insurance (JGICL)</li>
+        <li>EFU Insurance</li>
+        <li>Adamjee Insurance</li>
+        <li>Pak Qatar General Takaful</li>
+      </ul>
+      <p>
+        Local providers issue Schengen-compliant policies accepted by all Schengen embassies. Premiums are often lower than international providers but customer service in emergencies can be slower.
+      </p>
+
+      <h3>International Providers (via Online Agents)</h3>
+      <ul>
+        <li>SafetyWing (good for digital nomads, long-term)</li>
+        <li>IMG Global</li>
+        <li>AXA Schengen (often cheapest for Schengen minimum)</li>
+        <li>World Nomads (adventure travel)</li>
+        <li>Allianz</li>
+      </ul>
+
+      <h2>How to Choose</h2>
+      <ol>
+        <li><strong>Match the destination requirement</strong> — Schengen requires €30,000 minimum</li>
+        <li><strong>Check the policy covers the full trip</strong> — some providers exclude Pakistan nationals or require residency</li>
+        <li><strong>Read exclusions carefully</strong> — pre-existing conditions, adventure activities</li>
+        <li><strong>Confirm 24/7 emergency assistance</strong> — number should work from your destination</li>
+        <li><strong>Save the policy on your phone</strong> — carry both digital and printed copy</li>
+      </ol>
+
+      <h2>Common Questions</h2>
+      <h3>Can I buy insurance after I arrive at the destination?</h3>
+      <p>
+        Most policies require purchase before departure. Some providers (like SafetyWing) allow mid-trip purchase, but coverage typically starts 24 hours later and excludes any condition that began before you bought.
+      </p>
+
+      <h3>Does my credit card cover travel insurance?</h3>
+      <p>
+        Some Pakistani premium credit cards (HBL Visa Infinite, UBL World Elite) include basic travel insurance when you pay for the trip with the card. Coverage levels vary — rarely enough to meet Schengen's €30,000 requirement standalone.
+      </p>
+
+      <h3>What about COVID-19?</h3>
+      <p>
+        Most 2026 policies now treat COVID-19 like any other illness — covered under medical emergency unless specifically excluded. Confirm with your provider.
+      </p>
+    </section>
+  </article>
+</BaseLayout>

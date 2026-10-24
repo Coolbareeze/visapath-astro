@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CurrencyConverter from '../../components/tools/CurrencyConverter.jsx';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'PKR Currency Converter',
+  applicationCategory: 'TravelApplication',
+  operatingSystem: 'Any',
+  offers: { '@type': 'Offer', price: '0' },
+};
+---
+<BaseLayout
+  title="PKR Currency Converter — Travel Rates for Pakistani Travelers"
+  description="Convert PKR to USD, GBP, EUR, AED, SAR, THB, MYR and 10+ more currencies for travel budgeting from Pakistan."
+  schema={schema}
+>
+  <article class="max-w-3xl mx-auto px-4 py-10">
+    <nav class="text-sm text-gray-500 mb-4">
+      <a href="/" class="hover:text-brand-600">Home</a> ›
+      <a href="/tools/" class="hover:text-brand-600">Tools</a> ›
+      <span>PKR Currency Converter</span>
+    </nav>
+
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">PKR Currency Converter</h1>
+    <p class="text-gray-700 mb-8">
+      Quick conversions between Pakistani Rupees and travel currencies you'll actually use.
+    </p>
+
+    <CurrencyConverter client:load />
+
+    <section class="prose max-w-none mt-12">
+      <h2>Travel Currency Tips for Pakistanis</h2>
+      <p>
+        Mid-market rates (shown above) are the "real" exchange rate — the one banks use to trade with each other. You'll never get this rate at a counter. Banks and exchange houses add a margin of 1–3%, airport counters 5–10%, and some cards charge an additional 2–3% in foreign transaction fees.
+      </p>
+
+      <h2>Best Ways to Carry Money Abroad</h2>
+      <h3>USD Cash</h3>
+      <p>
+        For Gulf states, Thailand, and most countries, carrying some USD cash is useful. Exchange it locally once you arrive — rates in Dubai, Bangkok, Istanbul are typically better than Pakistan or arrival airports. Pakistani regulations allow carrying up to <strong>$10,000 cash per person</strong> on international travel without declaration.
+      </p>
+
+      <h3>Pakistani Debit/Credit Cards</h3>
+      <p>
+        Pakistani-issued Visa and Mastercard work internationally for ATM withdrawals and point-of-sale purchases, but:
+      </p>
+      <ul>
+        <li>Enable international usage via your bank app before departure</li>
+        <li>Set per-transaction and daily limits appropriate for travel</li>
+        <li>Expect 2–3% foreign transaction fee + exchange margin</li>
+        <li>Notify the bank of travel dates to avoid fraud blocks</li>
+      </ul>
+
+      <h3>Prepaid Travel Cards</h3>
+      <p>
+        HBL, UBL, Meezan and other Pakistani banks offer prepaid USD/EUR/GBP travel cards. You load PKR, it converts at the day's rate, then spend as that foreign currency with no further conversion markup abroad. Good for predictability.
+      </p>
+
+      <h3>Wise, Payoneer, Revolut</h3>
+      <p>
+        Multi-currency digital accounts are increasingly used by Pakistanis who travel often or work remotely. Wise offers true mid-market exchange with a small transparent fee. Note: Wise requires overseas residency verification for some features.
+      </p>
+
+      <h2>Which Currencies to Carry Where</h2>
+      <ul>
+        <li><strong>UK:</strong> GBP — don't exchange in Pakistan; airports/high streets give poor rates. Use Pakistani card at ATM in London or Wise.</li>
+        <li><strong>USA:</strong> USD cash + card</li>
+        <li><strong>Schengen Europe:</strong> EUR — card works everywhere, carry small EUR cash for taxis/tips</li>
+        <li><strong>UAE:</strong> AED — exchange in Dubai (better rates than Pakistan)</li>
+        <li><strong>Saudi Arabia:</strong> SAR — exchange on arrival</li>
+        <li><strong>Thailand:</strong> USD cash → exchange to THB in Bangkok</li>
+        <li><strong>Malaysia:</strong> USD → MYR in KL, or MYR directly</li>
+        <li><strong>Turkey:</strong> USD or EUR cash → TRY as needed; avoid airport rates</li>
+      </ul>
+
+      <h2>Common Mistakes</h2>
+      <ul>
+        <li><strong>Exchanging at Pakistani airport:</strong> rates are 3–5% worse than city exchange houses</li>
+        <li><strong>Using Pakistani card for Dynamic Currency Conversion (DCC):</strong> at POS abroad, always pay in <em>local</em> currency, not PKR — DCC adds hidden margin</li>
+        <li><strong>Carrying too much cash:</strong> theft risk, declaration requirements if above $10K</li>
+        <li><strong>Not checking card balance in travel currency:</strong> after conversion, your "USD" prepaid card might show less than expected</li>
+      </ul>
+
+      <h2>Current Approximate Rates (Reference)</h2>
+      <p>
+        Rates in this converter are approximate reference values. For live rates, check your bank's travel desk, the <a href="https://www.sbp.org.pk" rel="nofollow">State Bank of Pakistan</a>, or sources like XE.com and Wise.
+      </p>
+    </section>
+  </article>
+</BaseLayout>
