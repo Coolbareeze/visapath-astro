@@ -3,8 +3,8 @@
   "type": "module",
   "version": "1.0.0",
   "private": true,
-  "engines": {
-    "node": "20.x"
+    "engines": {
+    "node": "22.x"
   },
   "scripts": {
     "dev": "astro dev",
