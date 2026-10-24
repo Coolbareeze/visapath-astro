@@ -3,20 +3,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const tools = [
   { href: '/tools/visa-fee-calculator/', title: 'Visa Fee Calculator', desc: 'Fees for 10+ countries in PKR, USD, GBP, EUR.' },
-  { href: '/tools/schengen-90-180-calculator/', title: 'Schengen 90/180 Calculator', desc: 'Track your Schengen days with rolling 180-day window.' },
+  { href: '/tools/schengen-90-180-calculator/', title: 'Schengen 90/180 Calculator', desc: 'Track your Schengen days with rolling window.' },
   { href: '/tools/passport-validity-checker/', title: 'Passport Validity Checker', desc: 'Check the 6-month rule for your destination.' },
   { href: '/tools/document-checklist-generator/', title: 'Document Checklist', desc: 'Interactive checklist for every major visa type.' },
-  { href: '/tools/pkr-currency-converter/', title: 'Currency Converter', desc: '17 currencies for travel budgeting.' },
-  { href: '/tools/visa-interview-questions/', title: 'Interview Questions', desc: 'Practice visa interview questions.' },
+  { href: '/tools/pkr-currency-converter/', title: 'Currency Converter', desc: 'Live rates — PKR to 16 currencies.' },
+  { href: '/tools/umrah-cost-calculator/', title: 'Umrah Cost Calculator', desc: 'Package estimate — flights, hotels, visa, transport.' },
 ];
 
 const guides = [
   { href: '/guides/uk-student-visa-pakistan/', title: 'UK Student Visa from Pakistan' },
-  { href: '/guides/us-b1-b2-visa-pakistan/', title: 'US B1/B2 Visa from Pakistan' },
+  { href: '/guides/us-f1-student-visa-pakistan/', title: 'US F1 Student Visa from Pakistan' },
   { href: '/guides/schengen-visa-pakistanis/', title: 'Schengen Visa — Country Comparison' },
   { href: '/guides/canada-visitor-visa-pakistan/', title: 'Canada Visitor Visa from Pakistan' },
-  { href: '/guides/uae-visa-types-pakistan/', title: 'UAE Visa — All Types Explained' },
-  { href: '/guides/thailand-dtv-visa-pakistan/', title: 'Thailand DTV Visa for Pakistanis' },
+  { href: '/guides/umrah-visa-pakistan/', title: 'Umrah Visa for Pakistanis' },
+  { href: '/guides/visa-refusal-appeal-guide/', title: 'Visa Refusal — Reasons and Appeal Guide' },
 ];
 
 const schema = {
@@ -29,7 +29,7 @@ const schema = {
 ---
 <BaseLayout
   title="VisaPath.pk — Free Visa & Travel Tools for Pakistanis"
-  description="Free visa calculators, document checklists, and country guides for Pakistani travelers. UK, US, Canada, Schengen, UAE, Turkey, Thailand."
+  description="11 free calculators and 13 country guides. Visa fees, Schengen days, passport validity, Umrah costs, interview questions — built for Pakistani passport holders."
   schema={schema}
 >
   <section class="bg-gradient-to-br from-brand-50 to-white py-16">
@@ -38,7 +38,7 @@ const schema = {
         Free Visa & Travel Tools for Pakistanis
       </h1>
       <p class="text-lg text-gray-700 mb-8">
-        9 calculators and 8 country guides. Visa fees, Schengen days, passport validity, interview questions — all free, built for Pakistani passport holders.
+        11 calculators and 13 country guides. UK, US, Canada, Schengen, UAE, Turkey, Thailand, Malaysia, Umrah — all free, built for Pakistani passport holders.
       </p>
       <div class="flex gap-4 justify-center flex-wrap">
         <a href="/tools/" class="inline-block bg-brand-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-brand-700">
@@ -62,7 +62,7 @@ const schema = {
       ))}
     </div>
     <div class="text-center mt-8">
-      <a href="/tools/" class="text-brand-600 font-medium hover:underline">View all 9 tools →</a>
+      <a href="/tools/" class="text-brand-600 font-medium hover:underline">View all 11 tools →</a>
     </div>
   </section>
 
@@ -77,7 +77,7 @@ const schema = {
         ))}
       </div>
       <div class="text-center mt-8">
-        <a href="/guides/" class="text-brand-600 font-medium hover:underline">View all 8 guides →</a>
+        <a href="/guides/" class="text-brand-600 font-medium hover:underline">View all 13 guides →</a>
       </div>
     </div>
   </section>

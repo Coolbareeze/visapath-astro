@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import UmrahCostCalculator from '../../components/tools/UmrahCostCalculator.jsx';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Umrah Cost Calculator',
+  applicationCategory: 'TravelApplication',
+  operatingSystem: 'Any',
+  offers: { '@type': 'Offer', price: '0' },
+};
+---
+<BaseLayout
+  title="Umrah Cost Calculator — Package Estimate for Pakistanis"
+  description="Estimate Umrah cost from Pakistan — flights, visa, Makkah and Madinah hotels, transport, food. 7, 10, 14 night packages."
+  schema={schema}
+>
+  <article class="max-w-3xl mx-auto px-4 py-10">
+    <nav class="text-sm text-gray-500 mb-4">
+      <a href="/" class="hover:text-brand-600">Home</a> ›
+      <a href="/tools/" class="hover:text-brand-600">Tools</a> ›
+      <span>Umrah Cost Calculator</span>
+    </nav>
+
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">Umrah Cost Calculator</h1>
+    <p class="text-gray-700 mb-8">
+      Estimate your Umrah package cost from Pakistan based on hotel category, season, nights, and group size.
+    </p>
+
+    <UmrahCostCalculator client:load />
+
+    <section class="prose max-w-none mt-12">
+      <h2>What's Included in an Umrah Package</h2>
+      <ul>
+        <li>Umrah visa (Saudi government fee + agent processing)</li>
+        <li>Return flights from Pakistan to Jeddah or Madinah</li>
+        <li>Accommodation in Makkah (near Haram)</li>
+        <li>Accommodation in Madinah (near Masjid Nabawi)</li>
+        <li>Transport between airport, hotel, Makkah, Madinah</li>
+        <li>Ziyarat tours (optional, included in some packages)</li>
+      </ul>
+
+      <h2>Season Pricing</h2>
+      <p>
+        Umrah prices vary dramatically by season:
+      </p>
+      <ul>
+        <li><strong>Off-peak (Jan–Feb, Sep–Oct):</strong> cheapest, moderate crowds</li>
+        <li><strong>Shoulder (Mar–Apr, Nov):</strong> moderate pricing, pleasant weather</li>
+        <li><strong>Peak (May–Jul, Dec):</strong> summer and winter holidays, higher demand</li>
+        <li><strong>Ramadan (last 10 days):</strong> most expensive — hotel rates can be 3x normal, flights premium</li>
+      </ul>
+
+      <h2>Hotel Categories Near Haram</h2>
+      <h3>5-star Facing Haram</h3>
+      <p>
+        Clock Tower complex (Fairmont, Swissôtel, Raffles, Movenpick). Direct view of Kaaba. $150–$300/night off-peak, significantly higher in peak season.
+      </p>
+
+      <h3>5-star Within 300m</h3>
+      <p>
+        Hilton Suites, Pullman ZamZam, Hilton Convention. Close walk, premium amenities. $100–$180/night.
+      </p>
+
+      <h3>4-star Mid-Range</h3>
+      <p>
+        Properties within 500m of Haram. Clean, functional, free shuttle usually included. $50–$90/night.
+      </p>
+
+      <h3>3-star and Budget</h3>
+      <p>
+        1km or further from Haram. Walk 15–25 minutes or take shuttle. Significant savings. $25–$50/night.
+      </p>
+
+      <h2>Typical Package Durations</h2>
+      <ul>
+        <li><strong>7 nights:</strong> most common, 4–5 nights Makkah + 2–3 nights Madinah</li>
+        <li><strong>10 nights:</strong> relaxed, 6 Makkah + 4 Madinah</li>
+        <li><strong>14 nights:</strong> extended, 8–10 Makkah + 4–6 Madinah</li>
+        <li><strong>21+ nights:</strong> Ramadan or senior-friendly packages</li>
+      </ul>
+
+      <h2>Umrah Visa</h2>
+      <p>
+        Umrah visa for Pakistanis is issued by the Saudi government through authorised Pakistani agents. 2024–2026 updates:
+      </p>
+      <ul>
+        <li>Umrah visa valid for 90 days (extended from previous 30 days)</li>
+        <li>Visa holders can perform Umrah and visit anywhere in Saudi Arabia</li>
+        <li>Previously women needed a mahram (male guardian); now women 18+ can travel in groups</li>
+        <li>Online Nusuk platform allows some direct applications</li>
+      </ul>
+
+      <h2>Flights</h2>
+      <p>
+        Direct flights from Pakistan to Jeddah (JED) or Madinah (MED):
+      </p>
+      <ul>
+        <li>Saudia</li>
+        <li>Pakistan International Airlines (PIA)</li>
+        <li>flynas</li>
+        <li>Airblue</li>
+      </ul>
+      <p>
+        Return economy fares: PKR 120,000–250,000 depending on season. Umrah charters offer lower rates for group travel.
+      </p>
+
+      <h2>Package Types</h2>
+      <h3>Economy</h3>
+      <p>
+        Shared transport, group ziyarat tours, basic meals. Suitable for budget-conscious pilgrims.
+      </p>
+
+      <h3>Standard</h3>
+      <p>
+        Private coach for group, meals included, assistance throughout. Most common choice.
+      </p>
+
+      <h3>VIP</h3>
+      <p>
+        Private transport, premium hotels facing Haram, concierge service, premium meals. For comfort-focused pilgrims.
+      </p>
+
+      <h2>Hidden Costs to Budget For</h2>
+      <ul>
+        <li>Zamzam water (included in luggage allowance now)</li>
+        <li>Ihram clothing — PKR 2,000–5,000</li>
+        <li>Qurbani/Sadaqah — budget accordingly</li>
+        <li>Gifts for family — tasbeeh, prayer mats, dates, perfumes</li>
+        <li>Mobile data/SIM in Saudi Arabia — PKR 2,000–5,000</li>
+        <li>Tips for drivers, hotel staff</li>
+      </ul>
+
+      <h2>Choosing a Pakistani Umrah Agent</h2>
+      <p>
+        Only use agents licensed by the Ministry of Religious Affairs Pakistan. Check:
+      </p>
+      <ul>
+        <li>Current MORA license</li>
+        <li>Years of operation</li>
+        <li>Reviews from previous pilgrims</li>
+        <li>Transparency on what's included vs extra</li>
+        <li>Clear refund policy</li>
+      </ul>
+
+      <h2>Related Resources</h2>
+      <p>
+        <a href="/guides/uae-visa-types-pakistan/">UAE Visa Guide</a> ·
+        <a href="/tools/passport-validity-checker/">Passport Validity (Saudi 6-month rule)</a> ·
+        <a href="/tools/pkr-currency-converter/">PKR to SAR Converter</a>
+      </p>
+    </section>
+  </article>
+</BaseLayout>

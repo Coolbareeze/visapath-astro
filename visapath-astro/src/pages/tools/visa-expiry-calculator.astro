@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import VisaExpiryCalculator from '../../components/tools/VisaExpiryCalculator.jsx';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Visa Expiry Days Calculator',
+  applicationCategory: 'TravelApplication',
+  operatingSystem: 'Any',
+  offers: { '@type': 'Offer', price: '0' },
+};
+---
+<BaseLayout
+  title="Visa Expiry Days Calculator — Track Your Authorized Stay"
+  description="Calculate when your visa stay expires. Enter arrival date and days allowed to see must-leave date and remaining time."
+  schema={schema}
+>
+  <article class="max-w-3xl mx-auto px-4 py-10">
+    <nav class="text-sm text-gray-500 mb-4">
+      <a href="/" class="hover:text-brand-600">Home</a> ›
+      <a href="/tools/" class="hover:text-brand-600">Tools</a> ›
+      <span>Visa Expiry Calculator</span>
+    </nav>
+
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">Visa Expiry Days Calculator</h1>
+    <p class="text-gray-700 mb-8">
+      Enter your arrival date and the number of days allowed on your visa to see exactly when you must leave.
+    </p>
+
+    <VisaExpiryCalculator client:load />
+
+    <section class="prose max-w-none mt-12">
+      <h2>Visa Stay vs Visa Validity — Know the Difference</h2>
+      <p>
+        These are two separate dates:
+      </p>
+      <ul>
+        <li><strong>Visa validity:</strong> the period during which you can enter the country (e.g., "valid until 15 Jan 2027")</li>
+        <li><strong>Authorized stay:</strong> how long you can remain inside the country after entering (e.g., "90 days per entry")</li>
+      </ul>
+      <p>
+        A 5-year multiple-entry visa might only allow 90 days per entry. If you stay 95 days, you've overstayed — even though the visa is still "valid" for years.
+      </p>
+
+      <h2>Common Visa Stay Durations</h2>
+      <ul>
+        <li><strong>Schengen Visa (Type C):</strong> 90 days in any 180-day period</li>
+        <li><strong>UK Standard Visitor:</strong> 180 days per entry</li>
+        <li><strong>US B1/B2:</strong> up to 180 days (determined by CBP officer at entry, not visa)</li>
+        <li><strong>Canada Visitor:</strong> up to 180 days (stamped at airport)</li>
+        <li><strong>UAE Tourist:</strong> 30, 60, or 90 days depending on visa type</li>
+        <li><strong>Turkey e-Visa:</strong> 30 days per entry</li>
+        <li><strong>Thailand Tourist:</strong> 60 days, extendable by 30</li>
+        <li><strong>Umrah Visa:</strong> 90 days total</li>
+      </ul>
+
+      <h2>Where to Find Your Authorized Stay</h2>
+      <h3>Entry Stamp</h3>
+      <p>
+        When you arrive at the airport, the immigration officer stamps your passport with the date and often writes the "must leave by" date beside it. This stamp is the authoritative source.
+      </p>
+
+      <h3>I-94 (US)</h3>
+      <p>
+        For US visits, your authorized stay is on your I-94 record (not the visa itself). Check at <code>i94.cbp.dhs.gov</code>.
+      </p>
+
+      <h3>E-Visa / E-TA Confirmation</h3>
+      <p>
+        Electronic visas (Turkey e-Visa, Thai eVisa, Canada eTA) state the maximum stay in the approval email.
+      </p>
+
+      <h3>Visa Sticker</h3>
+      <p>
+        Traditional visa stickers show validity. For stay, check the visa type notation on your sticker (e.g., "C/90" means Category C visa, 90-day stay).
+      </p>
+
+      <h2>Consequences of Overstay</h2>
+      <ul>
+        <li><strong>UAE:</strong> AED 50/day fine, immigration ban if severe</li>
+        <li><strong>Saudi Arabia:</strong> fines up to SAR 100,000, 5-year ban</li>
+        <li><strong>Schengen:</strong> entry refusal, 5-year ban, biometrics flagged</li>
+        <li><strong>UK:</strong> impacts future visa applications permanently</li>
+        <li><strong>USA:</strong> any overstay > 180 days = 3-year ban; > 365 days = 10-year ban</li>
+        <li><strong>Canada:</strong> inadmissibility, future refusals</li>
+      </ul>
+
+      <h2>How to Avoid Accidental Overstay</h2>
+      <ul>
+        <li>Count your days from entry stamp — not from visa issue date</li>
+        <li>Entry day counts as day 1 (not day 0)</li>
+        <li>Exit day also counts as a day used</li>
+        <li>Set a phone reminder 1 week before must-leave date</li>
+        <li>Keep boarding passes and entry stamp photos as proof</li>
+        <li>If delayed by illness, flight cancellation, or emergency, document everything and contact immigration</li>
+      </ul>
+
+      <h2>If You Need to Stay Longer</h2>
+      <h3>Visa Extension</h3>
+      <p>
+        Most countries allow one extension per entry at an immigration office before your current stay expires. Apply at least 7 days before expiry. Fees vary.
+      </p>
+
+      <h3>Border Run</h3>
+      <p>
+        Some countries (Thailand, Malaysia) allow leaving and re-entering to reset the clock. Each new entry gets a fresh stay. Rules change — some countries limit the number of border runs per year.
+      </p>
+
+      <h3>Change of Status</h3>
+      <p>
+        If your purpose changes (tourist → student → worker), you may need to change visa status rather than just extend. This requires separate application and often leaving the country.
+      </p>
+
+      <h2>Related Tools</h2>
+      <p>
+        <a href="/tools/schengen-90-180-calculator/">Schengen 90/180 Calculator</a> ·
+        <a href="/tools/passport-validity-checker/">Passport Validity Checker</a> ·
+        <a href="/tools/visa-processing-time/">Processing Time Lookup</a>
+      </p>
+    </section>
+  </article>
+</BaseLayout>
