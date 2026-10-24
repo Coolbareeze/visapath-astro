@@ -2,32 +2,31 @@ import { useState, useMemo } from 'react';
 
 const SEASON = {
   'Off-peak (Jan-Feb, Sep-Oct)': 1.0,
-  'Shoulder (Mar-Apr, Nov)': 1.3,
-  'Peak (May-Jul, Dec)': 1.7,
-  'Ramadan (last 10 days)': 2.5,
+  'Shoulder (Mar-Apr, Nov)': 1.2,
+  'Peak (May-Jul, Dec)': 1.5,
+  'Ramadan (last 10 days)': 2.2,
 };
 
 const HOTEL_HARAM = {
-  '5-star (facing Haram)': 180,
-  '5-star (within 300m)': 120,
-  '4-star (500m)': 70,
-  '3-star (1km+)': 40,
-  'Budget (1.5km+)': 25,
+  '5-star (facing Haram)': 150,
+  '5-star (within 300m)': 100,
+  '4-star (500m)': 55,
+  '3-star (1km+)': 30,
+  'Budget (1.5km+)': 20,
 };
 
 const HOTEL_NABAWI = {
-  '5-star (facing Masjid)': 160,
-  '4-star (within 400m)': 70,
-  '3-star (within 1km)': 40,
-  'Budget': 25,
+  '5-star (facing Masjid)': 130,
+  '4-star (within 400m)': 55,
+  '3-star (within 1km)': 30,
+  'Budget': 20,
 };
 
 const PACKAGE_TYPE = {
-  'Economy (shared transport, group)': 0.85,
+  'Economy (shared transport, group)': 0.9,
   'Standard': 1.0,
-  'VIP (private transport, premium meals)': 1.6,
+  'VIP (private transport, premium meals)': 1.5,
 };
-
 export default function UmrahCostCalculator() {
   const [travelers, setTravelers] = useState(2);
   const [makkahNights, setMakkahNights] = useState(7);
@@ -38,12 +37,12 @@ export default function UmrahCostCalculator() {
   const [pkg, setPkg] = useState('Standard');
 
   const result = useMemo(() => {
-    const flight = 580 * travelers;
-    const umrahVisa = 300 * travelers;
+        const flight = 500 * travelers;
+    const umrahVisa = 180 * travelers;
     const makkahHotel = HOTEL_HARAM[hotelMakkah] * makkahNights;
     const madinahHotel = HOTEL_NABAWI[hotelMadinah] * madinahNights;
-    const transport = (makkahNights + madinahNights) * 15 * travelers;
-    const foodAndMisc = (makkahNights + madinahNights) * 25 * travelers;
+    const transport = (makkahNights + madinahNights) * 12 * travelers;
+    const foodAndMisc = (makkahNights + madinahNights) * 20 * travelers;
 
     const subtotal = flight + umrahVisa + (makkahHotel + madinahHotel) + transport + foodAndMisc;
     const total = subtotal * SEASON[season] * PACKAGE_TYPE[pkg];
