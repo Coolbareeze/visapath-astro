@@ -1,20 +1,28 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const guides = [
+  { href: '/guides/uk-student-visa-pakistan/', title: 'UK Student Visa from Pakistan — Complete 2026 Guide', excerpt: 'Everything Pakistani students need — CAS, financial requirements, interview, timeline, post-study options.' },
+  { href: '/guides/us-b1-b2-visa-pakistan/', title: 'US B1/B2 Visa from Pakistan — Step by Step', excerpt: 'DS-160, MRV fee, interview preparation, 214(b) refusals, visa duration, dropbox eligibility.' },
+  { href: '/guides/schengen-visa-pakistanis/', title: 'Schengen Visa for Pakistanis — Country Comparison', excerpt: 'Compare processing times, approval rates and requirements across the 29 Schengen countries.' },
+];
 ---
 <BaseLayout
   title="Visa Guides for Pakistani Travelers"
-  description="Country-specific visa guides for Pakistanis — UK, US, Canada, Schengen, UAE, Turkey, Thailand, and more."
+  description="Country-specific visa guides for Pakistani passport holders — UK, US, Schengen, Canada, UAE, Turkey, Thailand and more."
 >
   <section class="max-w-3xl mx-auto px-4 py-10">
     <h1 class="text-4xl font-bold mb-4">Visa Guides</h1>
     <p class="text-gray-700 mb-10">
-      Country-by-country visa guides written for Pakistani passport holders. New guides are added weekly.
+      Country-by-country visa guides written for Pakistani passport holders. In-depth, up-to-date, no fluff.
     </p>
-    <div class="bg-brand-50 border border-brand-500 rounded-lg p-6">
-      <p class="text-gray-700">
-        First guides launching soon. In the meantime, try our
-        <a href="/tools/schengen-90-180-calculator/" class="text-brand-600 underline font-medium">Schengen Calculator</a>.
-      </p>
+    <div class="space-y-6">
+      {guides.map((g) => (
+        <a href={g.href} class="block border border-gray-200 rounded-lg p-6 hover:border-brand-500 hover:shadow-md transition">
+          <h2 class="font-semibold text-xl mb-2 text-brand-600">{g.title}</h2>
+          <p class="text-gray-600 text-sm">{g.excerpt}</p>
+        </a>
+      ))}
     </div>
   </section>
 </BaseLayout>

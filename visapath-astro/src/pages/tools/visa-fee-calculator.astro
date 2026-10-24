@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import VisaFeeCalculator from '../../components/tools/VisaFeeCalculator.jsx';
+
+const appSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Visa Fee Calculator',
+  applicationCategory: 'TravelApplication',
+  operatingSystem: 'Any',
+  offers: { '@type': 'Offer', price: '0' },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'How much is a UK visitor visa from Pakistan?',
+      acceptedAnswer: { '@type': 'Answer', text: 'A UK Standard Visitor Visa (6 months) costs £115, which is roughly PKR 40,000 depending on exchange rates. Service centre fees are additional.' } },
+    { '@type': 'Question', name: 'What is the US B1/B2 visa fee for Pakistanis?',
+      acceptedAnswer: { '@type': 'Answer', text: 'The MRV (Machine Readable Visa) fee for a US B1/B2 tourist/business visa is $185 USD. There may also be a reciprocity fee depending on issuance.' } },
+    { '@type': 'Question', name: 'Do visa fees include biometric charges?',
+      acceptedAnswer: { '@type': 'Answer', text: 'No. Government fees do not include visa application centre (VFS/TLS/BLS) service charges, biometric collection fees, or priority processing fees.' } },
+  ],
+};
+---
+<BaseLayout
+  title="Visa Fee Calculator — UK, US, Canada, Schengen Fees in PKR"
+  description="Calculate visa fees in PKR, USD, GBP, or EUR for 10+ countries from Pakistan. Updated 2026 government fees for UK, US, Canada, Schengen, UAE and more."
+  schema={[appSchema, faqSchema]}
+>
+  <article class="max-w-3xl mx-auto px-4 py-10">
+    <nav class="text-sm text-gray-500 mb-4">
+      <a href="/" class="hover:text-brand-600">Home</a> ›
+      <a href="/tools/" class="hover:text-brand-600">Tools</a> ›
+      <span>Visa Fee Calculator</span>
+    </nav>
+
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">Visa Fee Calculator</h1>
+    <p class="text-gray-700 mb-8">
+      Government visa fees for Pakistani passport holders, converted to PKR, USD, GBP, or EUR. Updated for 2026.
+    </p>
+
+    <VisaFeeCalculator client:load />
+
+    <section class="prose max-w-none mt-12">
+      <h2>How to Use This Calculator</h2>
+      <p>
+        Pick the country you're applying to, select the type of visa, and choose your preferred currency. The calculator shows the base government fee in your chosen currency, converted at approximate current rates.
+      </p>
+
+      <h2>What's Included in the Fee</h2>
+      <p>
+        The amounts shown are <strong>government fees only</strong>. Depending on your country, visa type, and application route, you may also pay:
+      </p>
+      <ul>
+        <li><strong>Visa application centre fees</strong> (VFS Global, TLScontact, BLS, Gerry's) — typically PKR 4,000–8,000</li>
+        <li><strong>Biometric enrolment</strong> — often included, sometimes charged separately</li>
+        <li><strong>Priority or super-priority processing</strong> — PKR 15,000–60,000 extra for faster decisions</li>
+        <li><strong>Courier and SMS tracking</strong> — small optional charges</li>
+        <li><strong>Translation and attestation</strong> — if required for supporting documents</li>
+      </ul>
+
+      <h2>UK Visa Fees from Pakistan</h2>
+      <p>
+        UK visa fees are set by UKVI and reviewed annually, usually increasing in April. The <strong>Standard Visitor Visa</strong> covers tourism, visiting family, business meetings, and short courses. Long-term visitor visas (2, 5, and 10 years) cost more upfront but save significantly if you travel to the UK regularly. For a UK Health and Care Worker route or Skilled Worker visa, you'll also pay the Immigration Health Surcharge (IHS) separately.
+      </p>
+
+      <h2>US Visa Fees from Pakistan</h2>
+      <p>
+        The US charges a flat <strong>Machine Readable Visa (MRV) fee of $185</strong> for most nonimmigrant categories including B1/B2, F1, and J1. H1B and L1 visas are $205. The MRV fee is paid before scheduling your interview. Depending on reciprocity between the US and Pakistan, there may be an additional issuance fee charged after approval.
+      </p>
+
+      <h2>Schengen Visa Fees</h2>
+      <p>
+        A standard Schengen Type C short-stay visa costs <strong>€90 for adults</strong>, €45 for children aged 6–12, and is free for children under 6. The fee is the same whether you apply through the French, German, Dutch, Italian or any other Schengen embassy — but service centre charges vary by provider.
+      </p>
+
+      <h2>Why Fees Change</h2>
+      <p>
+        Governments review visa fees periodically. The UK typically increases fees every April. The US adjusted MRV fees in June 2023 (B1/B2 went from $160 to $185). Schengen fees were last raised from €80 to €90 in June 2024. Always verify the current fee on the official embassy website before paying.
+      </p>
+
+      <h2>Common Questions</h2>
+      <h3>Can I pay visa fees in Pakistani Rupees?</h3>
+      <p>
+        Most visa application centres in Pakistan accept payment in PKR via bank deposit, credit card, or online banking. The amount is calculated at the embassy's official exchange rate on the day of payment, which may differ from market rates.
+      </p>
+      <h3>Is the visa fee refundable if I'm refused?</h3>
+      <p>
+        No. Visa fees are non-refundable regardless of outcome. If your application is refused, you'll need to pay the fee again to reapply.
+      </p>
+      <h3>Do children pay the same fee?</h3>
+      <p>
+        It varies by country. Schengen offers reduced fees for children; UK, US and Canada charge the same for all ages. Always check the specific policy.
+      </p>
+    </section>
+
+    <section class="mt-12 bg-brand-50 border border-brand-500 rounded-lg p-6">
+      <h3 class="font-bold text-lg mb-2">Planning your application?</h3>
+      <p class="text-gray-700">
+        Check our <a href="/tools/document-checklist-generator/" class="text-brand-600 underline">Document Checklist</a> and <a href="/tools/passport-validity-checker/" class="text-brand-600 underline">Passport Validity Checker</a> next.
+      </p>
+    </section>
+  </article>
+</BaseLayout>

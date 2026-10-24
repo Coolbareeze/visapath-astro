@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DocumentChecklist from '../../components/tools/DocumentChecklist.jsx';
+
+const appSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Visa Document Checklist Generator',
+  applicationCategory: 'TravelApplication',
+  operatingSystem: 'Any',
+  offers: { '@type': 'Offer', price: '0' },
+};
+---
+<BaseLayout
+  title="Visa Document Checklist for Pakistani Travelers"
+  description="Interactive visa document checklist for UK, US, Schengen, Canada, UAE, Turkey, Thailand visas. Tick off as you prepare. Printable."
+  schema={appSchema}
+>
+  <article class="max-w-3xl mx-auto px-4 py-10">
+    <nav class="text-sm text-gray-500 mb-4">
+      <a href="/" class="hover:text-brand-600">Home</a> ›
+      <a href="/tools/" class="hover:text-brand-600">Tools</a> ›
+      <span>Document Checklist Generator</span>
+    </nav>
+
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">Visa Document Checklist Generator</h1>
+    <p class="text-gray-700 mb-8">
+      Interactive checklist of required documents by visa type. Tick off as you prepare, print to carry to your appointment.
+    </p>
+
+    <DocumentChecklist client:load />
+
+    <section class="prose max-w-none mt-12">
+      <h2>Why a Document Checklist Matters</h2>
+      <p>
+        Missing one document can delay or cause refusal of your visa. Each embassy publishes requirements separately, formats differ, and new conditions are added regularly. Working through a checklist keeps you organised and avoids the panic of discovering a missing paper the morning of your appointment.
+      </p>
+
+      <h2>How to Use This Tool</h2>
+      <p>
+        Pick your visa type from the dropdown. The checklist loads automatically. Tick items as you collect them. Your progress persists while the page is open. Print the final list to carry to your appointment.
+      </p>
+
+      <h2>Universal Document Tips for Pakistanis</h2>
+      <h3>Bank Statements</h3>
+      <p>
+        Get a stamped bank statement from your bank branch — not a printout from online banking. Embassies prefer <strong>6 months</strong> of history (3 months for Schengen) with the bank's official stamp and signature on each page. The closing balance should comfortably exceed the cost of your trip, with consistent deposits showing genuine income.
+      </p>
+
+      <h3>Employment Letter (NOC)</h3>
+      <p>
+        Letter should be on company letterhead, signed by HR or Director, and include: your position, join date, salary, approved leave dates (matching your travel), and confirmation of return. Not more than 1 month old.
+      </p>
+
+      <h3>Property Documents</h3>
+      <p>
+        If you own property in Pakistan, include the registry/allotment letter. This shows "ties to Pakistan" — evidence you'll return home. Important for first-time visa applicants.
+      </p>
+
+      <h3>Business Documents (Self-Employed)</h3>
+      <p>
+        SECP incorporation certificate (if company), NTN certificate, bank account statements (business account), tax returns for last 2 years, letterhead showing your role.
+      </p>
+
+      <h3>Previous Travel History</h3>
+      <p>
+        Any previous visas (used or expired) strengthen your application. UK, Schengen, US, Canada, Australia, New Zealand, Japan visa history significantly improves approval odds for new applications to Western destinations.
+      </p>
+
+      <h3>Photographs</h3>
+      <p>
+        Each country has its own photo specification. UK requires 45x35mm; US requires 2x2 inches (5x5cm); Schengen 35x45mm. Use a professional photographer who prints visa photos — do not use smartphone photos. Photos taken within last 6 months.
+      </p>
+
+      <h2>Common Reasons Pakistanis Get Refused</h2>
+      <ul>
+        <li><strong>Insufficient funds</strong> — bank balance doesn't match travel cost + living expenses</li>
+        <li><strong>Weak ties to Pakistan</strong> — single, unemployed, no property, no family dependents</li>
+        <li><strong>Unexplained large deposits</strong> — sudden cash deposits before application look suspicious</li>
+        <li><strong>Inconsistent itinerary</strong> — hotels in one city, visits planned to another, no transport</li>
+        <li><strong>Poor cover letter</strong> — missing purpose, dates, who's paying</li>
+        <li><strong>Document discrepancies</strong> — name spellings different across documents</li>
+      </ul>
+
+      <h2>Translation and Attestation</h2>
+      <p>
+        Documents in Urdu generally need to be translated to English for UK, US, Canada and Schengen applications. Use a certified translator. Some embassies require attestation from the Ministry of Foreign Affairs (Islamabad) for certain documents like educational certificates for study visas.
+      </p>
+
+      <h2>Final Checks Before Appointment</h2>
+      <ul>
+        <li>All original documents + 1 photocopy of each</li>
+        <li>Documents arranged in the embassy's suggested order</li>
+        <li>Clear plastic folder (no fancy binders — easy to inspect)</li>
+        <li>Appointment confirmation printed</li>
+        <li>Fee receipts printed</li>
+        <li>Arrive 30 minutes early</li>
+      </ul>
+    </section>
+  </article>
+</BaseLayout>

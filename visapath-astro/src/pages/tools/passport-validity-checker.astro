@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PassportValidityChecker from '../../components/tools/PassportValidityChecker.jsx';
+
+const appSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Passport Validity Checker',
+  applicationCategory: 'TravelApplication',
+  operatingSystem: 'Any',
+  offers: { '@type': 'Offer', price: '0' },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'What is the 6-month passport rule?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Many countries require your passport to be valid for at least 6 months beyond your intended departure date. This is to ensure travelers do not get stuck abroad with an expired passport.' } },
+    { '@type': 'Question', name: 'How early should I renew my Pakistani passport?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Renew at least 9 months before expiry if you travel internationally. Pakistani passports can be renewed earlier with no penalty, and this avoids last-minute issues with the 6-month rule.' } },
+    { '@type': 'Question', name: 'Can I enter Schengen with 3 months validity?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Yes. Schengen requires 3 months validity beyond planned exit from the Schengen Area, which is less strict than many other destinations.' } },
+  ],
+};
+---
+<BaseLayout
+  title="Passport Validity Checker — 6 Month Rule for Pakistani Travelers"
+  description="Check if your Pakistani passport meets the 6-month validity rule for your destination. Covers 14+ countries including UK, US, Schengen, UAE, Saudi Arabia."
+  schema={[appSchema, faqSchema]}
+>
+  <article class="max-w-3xl mx-auto px-4 py-10">
+    <nav class="text-sm text-gray-500 mb-4">
+      <a href="/" class="hover:text-brand-600">Home</a> ›
+      <a href="/tools/" class="hover:text-brand-600">Tools</a> ›
+      <span>Passport Validity Checker</span>
+    </nav>
+
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">Passport Validity Checker</h1>
+    <p class="text-gray-700 mb-8">
+      Check whether your Pakistani passport meets validity rules for your destination before you book your flight.
+    </p>
+
+    <PassportValidityChecker client:load />
+
+    <section class="prose max-w-none mt-12">
+      <h2>The 6-Month Passport Rule Explained</h2>
+      <p>
+        Most countries require your passport to be valid for at least six months beyond your intended date of departure from their territory. This isn't a visa requirement — it's an entry condition at the border. Airlines check this at check-in and will deny boarding if your passport doesn't comply.
+      </p>
+      <p>
+        The rule exists because immigration authorities worry that if you get stuck in the country (illness, missed flight, visa overstay), you shouldn't be stranded with an expired passport.
+      </p>
+
+      <h2>Which Countries Enforce 6 Months?</h2>
+      <p>
+        For Pakistani passport holders, the following destinations strictly enforce the 6-month rule from the date of entry:
+      </p>
+      <ul>
+        <li>United States</li>
+        <li>UAE (Dubai, Abu Dhabi)</li>
+        <li>Saudi Arabia</li>
+        <li>Turkey</li>
+        <li>Thailand</li>
+        <li>Malaysia</li>
+        <li>China</li>
+        <li>Singapore</li>
+        <li>Qatar, Oman, Bahrain, Kuwait</li>
+      </ul>
+
+      <h2>Which Countries Have Different Rules?</h2>
+      <ul>
+        <li><strong>Schengen Area (29 countries):</strong> 3 months beyond planned exit from Schengen</li>
+        <li><strong>UK:</strong> Must cover entire stay — no minimum beyond</li>
+        <li><strong>Canada:</strong> Must cover entire stay</li>
+        <li><strong>Australia:</strong> Must cover duration of visa</li>
+      </ul>
+
+      <h2>Pakistani Passport Renewal</h2>
+      <p>
+        You can renew your Pakistani passport (machine-readable or e-passport) <strong>before it expires with no penalty</strong>. The remaining validity is not carried forward — you simply get a fresh 5 or 10 year passport.
+      </p>
+      <p>
+        If you travel internationally more than once a year, keep at least 1 year of validity on your passport at all times. If you have less than 9 months and a trip planned, renew now rather than at the last minute.
+      </p>
+
+      <h3>Renewal Routes</h3>
+      <ul>
+        <li><strong>DGIP offices in Pakistan</strong> — standard processing 10 working days, urgent 24 hours (extra fee)</li>
+        <li><strong>Pakistani missions abroad</strong> — for overseas Pakistanis; London, Dubai, Riyadh and other missions issue new passports</li>
+        <li><strong>e-Passport pilot</strong> — rolled out to select cities; biometric chip embedded</li>
+      </ul>
+
+      <h2>What If Your Passport Expires During Travel?</h2>
+      <p>
+        If your passport will expire while you're abroad, you have two options: renew before departure, or renew at a Pakistani embassy/consulate in your destination country. The second option is slower, more expensive, and often requires return travel documents in the meantime.
+      </p>
+
+      <h2>Blank Pages Requirement</h2>
+      <p>
+        Many countries also require 1–2 blank visa pages. China specifically requires 2 blank pages. Running out of pages means renewing early even if the expiry is far off.
+      </p>
+    </section>
+  </article>
+</BaseLayout>

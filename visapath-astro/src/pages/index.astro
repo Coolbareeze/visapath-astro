@@ -2,8 +2,16 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const tools = [
+  { href: '/tools/visa-fee-calculator/', title: 'Visa Fee Calculator', desc: 'Fees for 10+ countries in PKR, USD, GBP, EUR.' },
   { href: '/tools/schengen-90-180-calculator/', title: 'Schengen 90/180 Calculator', desc: 'Track your Schengen days with rolling 180-day window.' },
-  { href: '/tools/', title: 'More Tools Coming Soon', desc: 'Visa fee calculator, passport validity, document checklists.' },
+  { href: '/tools/passport-validity-checker/', title: 'Passport Validity Checker', desc: 'Check the 6-month rule for your destination.' },
+  { href: '/tools/document-checklist-generator/', title: 'Document Checklist', desc: 'Interactive checklist for every major visa type.' },
+];
+
+const guides = [
+  { href: '/guides/uk-student-visa-pakistan/', title: 'UK Student Visa from Pakistan — Complete Guide' },
+  { href: '/guides/us-b1-b2-visa-pakistan/', title: 'US B1/B2 Visa from Pakistan — Step by Step' },
+  { href: '/guides/schengen-visa-pakistanis/', title: 'Schengen Visa for Pakistanis — Country Comparison' },
 ];
 
 const schema = {
@@ -42,6 +50,19 @@ const schema = {
           <p class="text-gray-600 text-sm">{t.desc}</p>
         </a>
       ))}
+    </div>
+  </section>
+
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-8">Latest Guides</h2>
+      <div class="space-y-4">
+        {guides.map((g) => (
+          <a href={g.href} class="block bg-white border border-gray-200 rounded-lg p-5 hover:border-brand-500 hover:shadow-md transition">
+            <h3 class="font-semibold text-lg text-brand-600">{g.title}</h3>
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 </BaseLayout>
