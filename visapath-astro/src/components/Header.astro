@@ -8,7 +8,7 @@ const nav = [
 ---
 <header class="border-b border-gray-200 bg-white sticky top-0 z-50">
   <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-    <a href="/" class="font-bold text-xl text-brand-600">VisaPath.pk</a>
+    <a href="/" class="flex items-center" aria-label="VisaPath.pk home">   <img src="/logo.png" alt="VisaPath.pk — Your Guide to Global Opportunities" class="h-10 md:h-12 w-auto" /> </a>
     <nav class="hidden md:flex gap-6">
       {nav.map((i) => (
         <a href={i.href} class="text-gray-700 hover:text-brand-600 font-medium">{i.label}</a>
