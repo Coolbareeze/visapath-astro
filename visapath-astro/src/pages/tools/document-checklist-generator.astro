@@ -8,12 +8,13 @@ const appSchema = {
   name: 'Visa Document Checklist Generator',
   applicationCategory: 'TravelApplication',
   operatingSystem: 'Any',
+  url: new URL('/tools/document-checklist-generator/', Astro.site).href,
   offers: { '@type': 'Offer', price: '0' },
 };
 ---
 <BaseLayout
-  title="Visa Document Checklist for Pakistani Travelers"
-  description="Interactive visa document checklist for UK, US, Schengen, Canada, UAE, Turkey, Thailand visas. Tick off as you prepare. Printable."
+  title="Printable Visa Document Checklist for Pakistani Applicants"
+  description="Choose a visa type, tick off documents as you gather them, and print your checklist for a UK, US, Schengen, Canada, UAE, Turkey or Thailand visa."
   schema={appSchema}
 >
   <article class="max-w-3xl mx-auto px-4 py-10">
@@ -31,6 +32,8 @@ const appSchema = {
     <DocumentChecklist client:load />
 
     <section class="prose max-w-none mt-12">
+      <p>Before applying, <a href="/tools/passport-validity-checker/">check your passport validity</a> and <a href="/tools/visa-fee-calculator/">estimate your visa fees in PKR</a>.</p>
+
       <h2>Why a Document Checklist Matters</h2>
       <p>
         Missing one document can delay or cause refusal of your visa. Each embassy publishes requirements separately, formats differ, and new conditions are added regularly. Working through a checklist keeps you organised and avoids the panic of discovering a missing paper the morning of your appointment.
