@@ -8,12 +8,13 @@ const schema = {
   name: 'PKR Currency Converter',
   applicationCategory: 'TravelApplication',
   operatingSystem: 'Any',
+  url: new URL('/tools/pkr-currency-converter/', Astro.site).href,
   offers: { '@type': 'Offer', price: '0' },
 };
 ---
 <BaseLayout
-  title="PKR Currency Converter — Travel Rates for Pakistani Travelers"
-  description="Convert PKR to USD, GBP, EUR, AED, SAR, THB, MYR and 10+ more currencies for travel budgeting from Pakistan."
+  title="USD to PKR & Travel Currency Converter"
+  description="Convert US dollars to Pakistani rupees using the latest available reference rates. Check amounts like 10,000 USD or switch to GBP, EUR, AED and more."
   schema={schema}
 >
   <article class="max-w-3xl mx-auto px-4 py-10">
@@ -31,6 +32,9 @@ const schema = {
     <CurrencyConverter client:load />
 
     <section class="prose max-w-none mt-12">
+      <h2>How to convert 10,000 USD to PKR</h2>
+      <p>Enter 10,000, select USD as the source currency and PKR as the destination. The estimate uses the rate shown for the date of the latest update. For application costs, use the <a href="/tools/visa-fee-calculator/">visa fee calculator</a>.</p>
+
       <h2>Travel Currency Tips for Pakistanis</h2>
       <p>
         Mid-market rates (shown above) are the "real" exchange rate — the one banks use to trade with each other. You'll never get this rate at a counter. Banks and exchange houses add a margin of 1–3%, airport counters 5–10%, and some cards charge an additional 2–3% in foreign transaction fees.

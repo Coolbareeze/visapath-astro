@@ -8,6 +8,7 @@ const appSchema = {
   name: 'Visa Fee Calculator',
   applicationCategory: 'TravelApplication',
   operatingSystem: 'Any',
+  url: new URL('/tools/visa-fee-calculator/', Astro.site).href,
   offers: { '@type': 'Offer', price: '0' },
 };
 
@@ -25,8 +26,8 @@ const faqSchema = {
 };
 ---
 <BaseLayout
-  title="Visa Fee Calculator — UK, US, Canada, Schengen Fees in PKR"
-  description="Calculate visa fees in PKR, USD, GBP, or EUR for 10+ countries from Pakistan. Updated 2026 government fees for UK, US, Canada, Schengen, UAE and more."
+  title="Visa Fee Calculator for Pakistan: UK, US, Canada & More"
+  description="Compare government visa fees by destination and visa type for Pakistani applicants. Estimate costs in PKR for the UK, US, Canada, Schengen, UAE and more."
   schema={[appSchema, faqSchema]}
 >
   <article class="max-w-3xl mx-auto px-4 py-10">

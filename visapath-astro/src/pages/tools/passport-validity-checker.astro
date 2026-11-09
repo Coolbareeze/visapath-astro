@@ -8,6 +8,7 @@ const appSchema = {
   name: 'Passport Validity Checker',
   applicationCategory: 'TravelApplication',
   operatingSystem: 'Any',
+  url: new URL('/tools/passport-validity-checker/', Astro.site).href,
   offers: { '@type': 'Offer', price: '0' },
 };
 
@@ -25,8 +26,8 @@ const faqSchema = {
 };
 ---
 <BaseLayout
-  title="Passport Validity Checker — 6 Month Rule for Pakistani Travelers"
-  description="Check if your Pakistani passport meets the 6-month validity rule for your destination. Covers 14+ countries including UK, US, Schengen, UAE, Saudi Arabia."
+  title="Passport Validity Checker for Pakistan: 6-Month Rule"
+  description="Enter your Pakistani passport expiry date and travel dates to check the validity rule for your destination, including the UAE, Saudi Arabia and Schengen."
   schema={[appSchema, faqSchema]}
 >
   <article class="max-w-3xl mx-auto px-4 py-10">

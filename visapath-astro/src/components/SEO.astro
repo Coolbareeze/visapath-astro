@@ -10,10 +10,14 @@ interface Props {
 const {
   title,
   description,
-  canonical = Astro.url.href,
+  canonical: canonicalOverride,
   ogImage = '/og-default.jpg',
   schema,
 } = Astro.props;
+
+const pathname = Astro.url.pathname.replace(/\/?$/, '/');
+const canonical = new URL(canonicalOverride ?? pathname, Astro.site);
+const socialImage = new URL(ogImage, Astro.site);
 
 const siteName = 'VisaPath.pk';
 const fullTitle = title.includes('VisaPath') ? title : `${title} | ${siteName}`;
@@ -27,11 +31,13 @@ const schemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
 <meta property="og:title" content={fullTitle} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonical} />
+<meta property="og:image" content={socialImage} />
 <meta property="og:site_name" content={siteName} />
 <meta property="og:locale" content="en_PK" />
 <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content={socialImage} />
 <meta name="twitter:title" content={fullTitle} />
 <meta name="twitter:description" content={description} />
 {schemas.map((s) => (
-  <script type="application/ld+json" set:html={JSON.stringify(s)} />
+  <script type="application/ld+json" set:html={JSON.stringify(s).replace(/</g, '\\u003c')} />
 ))}
