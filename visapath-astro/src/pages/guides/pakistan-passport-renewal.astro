@@ -1,229 +1,154 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-
+const url = 'https://www.visapath.pk/guides/pakistan-passport-renewal/';
+const sources = {
+  requirements: 'https://www.dgip.gov.pk/passport/ordinary-passport.php',
+  online: 'https://www.dgip.gov.pk/eServices/online-passport.php',
+  faq: 'https://www.dgip.gov.pk/faq/faq.php',
+  electronic: 'https://www.dgip.gov.pk/eServices/epassport.php',
+  process: 'https://www.dgip.gov.pk/passport/process.php',
+  fast: 'https://www.dgip.gov.pk/updates/passport-fast-track.php',
+  warsaw: 'https://mofa.gov.pk/warsaw-machine-readable-passport-mrp',
+};
+const fees = [
+  ['36', '5', '9,000', '15,000'], ['36', '10', '13,500', '22,500'],
+  ['72', '5', '16,500', '27,000'], ['72', '10', '24,750', '40,500'],
+];
+const questions = [
+  { question: 'Can I renew my Pakistani passport online from Pakistan or abroad?', answer: 'Yes. DGIP offers online renewal to inland and overseas Pakistanis who hold their old passport and whose particulars match that passport and NADRA records. The online category covers expired passports or those with up to one year remaining; check the portal at the exact one-year boundary.', source: sources.faq },
+  { question: 'Can I renew before the last year of validity?', answer: 'Yes, at a passport office. DGIP does not restrict renewal before expiry, although it may ask for a reason. The online renewal window is narrower.', source: sources.requirements },
+  { question: 'Is an e-passport the same as an online application?', answer: 'No. An e-passport is a physical passport with an electronic biometric chip. Online renewal is an application channel. Check the offered product before paying.', source: sources.electronic },
+  { question: 'Can overseas Pakistanis get an e-passport?', answer: 'Some missions explicitly offer it: Warsaw announced service from 15 October 2026. Confirm availability and fees with your own mission; older DGIP pages still describe overseas rollout as forthcoming.', source: sources.warsaw },
+  { question: 'Can children get a ten-year passport?', answer: 'DGIP limits children under 15 to five-year validity. Applicants aged 15–17 still follow minor-document requirements.', source: sources.requirements },
+  { question: 'Does the processing time include delivery?', answer: 'No. DGIP excludes courier time. Online scrutiny, additional verification and shipment can add time. Confirm the current estimate before arranging travel.', source: sources.requirements },
+];
 const article = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: 'Pakistan Passport Renewal — Complete 2026 Guide',
+  '@context': 'https://schema.org', '@type': 'Article',
+  headline: 'Pakistani Passport Renewal 2026: Fees, Online & e-Passport',
   author: { '@type': 'Organization', name: 'VisaPath.pk' },
   publisher: { '@type': 'Organization', name: 'VisaPath.pk' },
-  datePublished: '2026-10-24',
+  datePublished: '2026-10-24', dateModified: '2026-11-14',
+  mainEntityOfPage: url, inLanguage: 'en-PK', citation: Object.values(sources),
 };
-
 const faq = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    { '@type': 'Question', name: 'How long does Pakistani passport renewal take?',
-      acceptedAnswer: { '@type': 'Answer', text: 'Normal renewal takes 10 working days. Urgent service delivers within 7 working days, and fast-track within 24 hours (fees increase accordingly).' } },
-    { '@type': 'Question', name: 'Can I renew my Pakistani passport before it expires?',
-      acceptedAnswer: { '@type': 'Answer', text: 'Yes. You can renew up to 1 year before expiry at any DGIP office with no penalty. Remaining validity is not carried forward — you get a fresh 5 or 10 year passport.' } },
-    { '@type': 'Question', name: 'What is the e-Passport?',
-      acceptedAnswer: { '@type': 'Answer', text: 'Pakistan e-Passport is a biometric passport with embedded chip. It is being rolled out across major cities and provides faster immigration clearance abroad.' } },
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: questions.map(({ question, answer }) => ({
+    '@type': 'Question', name: question,
+    acceptedAnswer: { '@type': 'Answer', text: answer },
+  })),
+};
+const breadcrumbs = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.visapath.pk/' },
+    { '@type': 'ListItem', position: 2, name: 'Guides', item: 'https://www.visapath.pk/guides/' },
+    { '@type': 'ListItem', position: 3, name: 'Pakistan Passport Renewal', item: url },
   ],
 };
 ---
 <BaseLayout
-  title="Pakistan Passport Renewal — Complete 2026 Guide"
-  description="Step-by-step guide to renewing your Pakistani passport (MRP and e-Passport). Fees, documents, DGIP offices, overseas renewal, urgent service."
-  schema={[article, faq]}
+  title="Pakistani Passport Renewal 2026: Fees & e-Passport"
+  description="Check official Pakistani passport renewal fees, online eligibility, documents and e-passport updates for November 2026, including overseas applications."
+  canonical={url}
+  schema={[article, faq, breadcrumbs]}
 >
   <article class="max-w-3xl mx-auto px-4 py-10">
-    <nav class="text-sm text-gray-500 mb-4">
+    <nav aria-label="Breadcrumb" class="text-sm text-gray-500 mb-4">
       <a href="/" class="hover:text-brand-600">Home</a> ›
       <a href="/guides/" class="hover:text-brand-600">Guides</a> ›
-      <span>Pakistan Passport Renewal</span>
+      <span aria-current="page">Pakistan Passport Renewal</span>
     </nav>
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">Pakistani Passport Renewal 2026: Fees, Online Process &amp; e-Passports</h1>
+    <p class="text-gray-500 text-sm mb-8">Official sources checked: <time datetime="2026-11-14">14 November 2026</time> · By VisaPath.pk</p>
+    <div class="prose max-w-none">
+      <p class="text-lg">Renewing a Pakistani passport? Check current e-passport fees, online eligibility and office procedures below. VisaPath.pk is an independent guide and does not issue passports or collect application fees.</p>
+      <nav aria-label="On this page" class="rounded-lg bg-gray-50 p-4 my-6">
+        <strong>On this page</strong>
+        <ul>
+          <li><a href="#epassport">e-passports and MRP transition</a></li>
+          <li><a href="#fees">Official fees</a></li>
+          <li><a href="#online">Online renewal</a></li>
+          <li><a href="#documents">Documents and office process</a></li>
+          <li><a href="#processing">Processing options</a></li>
+          <li><a href="#overseas">Overseas renewal</a></li>
+          <li><a href="#faq">FAQs</a></li>
+        </ul>
+      </nav>
 
-    <h1 class="text-3xl md:text-4xl font-bold mb-4">Pakistan Passport Renewal — Complete 2026 Guide</h1>
-    <p class="text-gray-500 text-sm mb-8">Last updated: October 2026 · 10 minute read</p>
+      <h2 id="epassport">Pakistan e-passports and the MRP transition</h2>
+      <p>An e-passport has a contactless chip storing identity and biometric information. DGIP records its initial launch in March 2022 and nationwide field-office availability from 16 August 2023. <a href={sources.electronic}>DGIP e-passport guidance</a>.</p>
+      <p><strong>October 2026 update:</strong> Pakistan’s embassy in Warsaw says new MRP issuance has been discontinued and e-passport service began there on 15 October 2026. DGIP’s older general page still describes overseas rollout as forthcoming. Confirm service with your own mission. <a href={sources.warsaw}>Dated government notice from Warsaw</a>.</p>
+      <p>The issuance notice does not establish cancellation of all existing MRPs. A chip does not establish visa-free entry or automatic eligibility for a destination’s e-gates.</p>
 
-    <section class="prose max-w-none">
-      <p class="lead text-lg">
-        Your Pakistani passport is required for all international travel. This guide covers everything about renewing it in 2026 — from DGIP offices in Pakistan to Pakistani missions abroad, standard and urgent service, and the new e-Passport.
-      </p>
+      <h2 id="fees">Official passport renewal fees: November 2026</h2>
+      <p>DGIP publishes the following <strong>ordinary e-passport base fees in PKR</strong>. These are passport fees, not an additional supplement to an MRP price. <a href={sources.requirements}>Official DGIP fee table</a>.</p>
+      <div class="overflow-x-auto" role="region" aria-label="E-passport fee table" tabindex="0">
+        <table>
+          <caption>Ordinary e-passport fees — Pakistani rupees</caption>
+          <thead><tr><th scope="col">Pages</th><th scope="col">Years</th><th scope="col">Normal (PKR)</th><th scope="col">Urgent (PKR)</th></tr></thead>
+          <tbody>{fees.map(([pages, years, normal, urgent]) => <tr><td>{pages}</td><td>{years}</td><td>{normal}</td><td>{urgent}</td></tr>)}</tbody>
+        </table>
+      </div>
+      <p>The current table lists 36 and 72 pages only. A current 100-page e-passport rate and e-passport fast-track fee were not verified, so no amount is quoted. Do not use older MRP rates as current e-passport prices. Confirm service and delivery charges before payment; overseas local-currency schedules differ.</p>
 
-      <h2>When to Renew</h2>
-      <p>
-        Renew your passport:
-      </p>
-      <ul>
-        <li>Within 1 year of expiry if you travel internationally</li>
-        <li>If you have less than 6 months validity (many countries require 6+ months)</li>
-        <li>When you run out of blank pages</li>
-        <li>If your name, address, or other details change</li>
-        <li>Immediately if lost, stolen, or damaged</li>
-      </ul>
-      <p>
-        You can renew up to 1 year before expiry with <strong>no penalty</strong>. Remaining validity is not transferred — you get a fresh 5 or 10 year passport from the issue date.
-      </p>
-
-      <h2>Types of Pakistani Passports</h2>
-      <h3>Machine Readable Passport (MRP)</h3>
-      <p>
-        Standard Pakistani passport since 2004. Available in 36-page and 72-page options, with 5-year or 10-year validity. Suitable for most travellers.
-      </p>
-
-      <h3>e-Passport (Biometric)</h3>
-      <p>
-        Rolled out progressively from 2024. Contains an embedded chip with biometric data for faster international immigration clearance. Available in major DGIP centres; being extended nationwide. Slightly higher fee but preferred for frequent international travellers.
-      </p>
-
-      <h2>Passport Fees (2026)</h2>
-      <h3>MRP Standard (10 Working Days)</h3>
-      <table>
-        <thead><tr><th>Pages</th><th>5 Years</th><th>10 Years</th></tr></thead>
-        <tbody>
-          <tr><td>36 pages</td><td>PKR 4,500</td><td>PKR 9,000</td></tr>
-          <tr><td>72 pages</td><td>PKR 6,500</td><td>PKR 13,500</td></tr>
-        </tbody>
-      </table>
-
-      <h3>Urgent (7 Working Days)</h3>
-      <ul>
-        <li>36-page 5-year: PKR 7,500</li>
-        <li>36-page 10-year: PKR 15,000</li>
-        <li>72-page 5-year: PKR 10,500</li>
-        <li>72-page 10-year: PKR 20,000</li>
-      </ul>
-
-      <h3>Fast Track (24 Hours)</h3>
-      <ul>
-        <li>36-page 5-year: PKR 15,000</li>
-        <li>36-page 10-year: PKR 30,000</li>
-        <li>72-page 5-year: PKR 20,000</li>
-        <li>72-page 10-year: PKR 40,000</li>
-      </ul>
-
-      <h3>e-Passport (additional)</h3>
-      <p>
-        e-Passport typically costs PKR 2,000–3,000 more than equivalent MRP for the same validity and pages.
-      </p>
-
-      <h2>Documents Needed</h2>
-      <h3>For Adult Renewal</h3>
-      <ul>
-        <li>Current CNIC (original + copy)</li>
-        <li>Previous passport (original + copy of data page)</li>
-        <li>Appointment confirmation (if applied online)</li>
-        <li>Fee payment slip from bank</li>
-      </ul>
-
-      <h3>For Minor Children (under 18)</h3>
-      <ul>
-        <li>B-Form or Juvenile ID</li>
-        <li>Both parents' CNICs</li>
-        <li>Both parents must be present</li>
-        <li>Previous passport (if being renewed)</li>
-        <li>Birth certificate (if first passport)</li>
-      </ul>
-
-      <h3>For First-Time Applicants (Adults)</h3>
-      <ul>
-        <li>CNIC</li>
-        <li>CNIC of father/husband/mother for verification</li>
-        <li>Educational certificates (if required)</li>
-        <li>No previous passport required but easier if previously issued</li>
-      </ul>
-
-      <h2>Where to Apply in Pakistan</h2>
-      <h3>DGIP Offices</h3>
-      <p>
-        Directorate General of Immigration & Passports (DGIP) offices are located in all major cities. Main centres:
-      </p>
-      <ul>
-        <li>Islamabad: Awami Markaz G-9/1, Blue Area</li>
-        <li>Lahore: Shadman, Garden Town, Johar Town, DHA</li>
-        <li>Karachi: Civil Lines, Saddar, Clifton, Gulistan-e-Johar</li>
-        <li>Rawalpindi, Faisalabad, Multan, Peshawar, Quetta — regional offices</li>
-      </ul>
-
-      <h3>Online Appointment</h3>
-      <p>
-        You can book appointments and start applications at <code>onlinemrp.dgip.gov.pk</code>. This saves queue time at the office. Walk-in is still available but slower.
-      </p>
-
-      <h2>Process at the Office</h2>
+      <h2 id="online">Online Pakistani passport renewal</h2>
+      <p>DGIP’s FAQ requires the old passport to be available, matching particulars in that passport and NADRA records, and an expired passport or up to one year remaining. Its e-services page says less than one year; check the portal at the boundary. Both inland and overseas Pakistanis are eligible. <a href={sources.faq}>Eligibility FAQ</a> · <a href={sources.online}>Online instructions</a>.</p>
       <ol>
-        <li>Arrive at your appointment time with documents</li>
-        <li>Token issued at reception</li>
-        <li>Data verification counter — officer checks your details</li>
-        <li>Biometrics capture — fingerprints and photo</li>
-        <li>Signature capture</li>
-        <li>Fee receipt verification</li>
-        <li>Acknowledgment slip with tracking number issued</li>
+        <li>Create an account at the <a href="https://onlinemrp.dgip.gov.pk/">official DGIP passport portal</a>.</li>
+        <li>Choose renewal and complete the requested personal details.</li>
+        <li>Provide photograph, biometrics and supporting scans using the portal’s current specifications for your case.</li>
+        <li>Review the chosen service and delivery arrangements, then pay by credit or debit card.</li>
+        <li>Monitor your registered email. DGIP may refer the case to a mission or Regional Passport Office for verification before approving printing and dispatch.</li>
       </ol>
-      <p>
-        Total time at office: 30 minutes to 2 hours depending on queue.
-      </p>
+      <p>Online fees are non-refundable and non-transferable between people. Eligible overseas applicants can convert an existing normal online application to urgent by paying the difference through the portal. <a href={sources.online}>DGIP payment, scrutiny and conversion rules</a>.</p>
 
-      <h2>Collection</h2>
-      <p>
-        Options:
-      </p>
-      <ul>
-        <li><strong>In-person collection</strong> on the stated date — bring acknowledgment slip and CNIC</li>
-        <li><strong>Courier delivery</strong> to home address (small additional fee) — selected at application</li>
-        <li><strong>Nominated person</strong> can collect with authority letter</li>
-      </ul>
-
-      <h2>Overseas Pakistanis — Renewing Abroad</h2>
-      <p>
-        Pakistani embassies and consulates abroad issue new passports to overseas Pakistanis. Major missions:
-      </p>
-      <ul>
-        <li>London, Manchester, Bradford (UK)</li>
-        <li>New York, Washington, Houston, Los Angeles (US)</li>
-        <li>Toronto (Canada)</li>
-        <li>Dubai, Abu Dhabi (UAE)</li>
-        <li>Riyadh, Jeddah (Saudi Arabia)</li>
-        <li>Many other embassies worldwide</li>
-      </ul>
-
-      <h3>Process Abroad</h3>
+      <h2 id="documents">Documents required and renewal at an office</h2>
+      <p>Adults need original valid CNIC/NICOP and copy, plus the old passport and copy. Departmental NOC applies to government, semi-government and autonomous-body staff; dual nationals also bring their foreign passport and copy. <a href={sources.requirements}>Official document checklist</a>.</p>
+      <p>For minors aged 10 or above, DGIP requires an updated CRC with photograph and fingerprints or a Juvenile Card, plus a copy. Below 10, bring original CRC/Form B or FRC and a copy. Bring both parents’ valid original CNICs/passports and copies, and the previous passport for renewal. Either parent or a court-appointed guardian accompanies the child. Separation, divorce, guardianship or a deceased parent require the applicable consent, custody, guardianship or death documents; check the official checklist.</p>
       <ol>
-        <li>Book appointment at the mission (website varies)</li>
-        <li>Attend with current passport, CNIC/NICOP, fee</li>
-        <li>Biometrics captured</li>
-        <li>Processing time: typically 4–8 weeks (longer than Pakistan)</li>
-        <li>Collect or receive by courier</li>
+        <li>Attend with documents for photograph and QR-based token.</li>
+        <li>Complete fingerprints, data entry, record checks and officer interview.</li>
+        <li>Check identity details before approval and give accurate contact information.</li>
+        <li>Follow QR payment instructions; DGIP lists digital wallets and online banking.</li>
+        <li>Keep the original token. The office procedure permits collection by the applicant or a blood relative.</li>
       </ol>
-      <p>
-        <strong>NICOP (National ID Card for Overseas Pakistanis)</strong> is often required. If you don't have one, apply for it first through NADRA.
-      </p>
+      <p>Some stages are combined at one-window offices. Extra verification may be required. <a href={sources.process}>Official office process</a>. For name or other identity changes, update CNIC/NICOP first and follow DGIP’s modification procedure rather than submitting mismatched ordinary-renewal details. <a href={sources.requirements}>Modification rules</a>.</p>
 
-      <h2>Lost or Stolen Passports</h2>
-      <p>
-        If your passport is lost or stolen:
-      </p>
-      <ol>
-        <li>File a police report (FIR) immediately</li>
-        <li>If abroad, report to nearest Pakistani mission</li>
-        <li>Apply for a replacement passport (treated as new application)</li>
-        <li>Expect additional scrutiny — repeated losses can trigger investigation</li>
-      </ol>
+      <h2 id="processing">Normal, urgent and fast-track processing</h2>
+      <p>DGIP’s dedicated priority table gives <strong>21 working days normal</strong> and <strong>5 working days urgent</strong> after successful processing, excluding courier time. Older 10/4-day wording remains elsewhere on that page. Confirm the current estimate; these are not guaranteed arrival dates. <a href={sources.requirements}>Priority table and delivery notes</a>.</p>
+      <p>The fast-track notice lists 47 cities, including Islamabad, Karachi and Lahore. It does not establish a current e-passport fast-track price or delivery commitment. Ask the office to confirm product, fee and availability before payment; a 24-hour promise is not supported by this notice. <a href={sources.fast}>DGIP fast-track city list</a>.</p>
+      <p>Allow time for scrutiny, additional checks and shipment. DGIP provides status notifications through SMS 9988 in Pakistan and email. <a href={sources.process}>Status and dispatch guidance</a>.</p>
 
-      <h2>Common Issues</h2>
-      <h3>Name Mismatches</h3>
-      <p>
-        Your passport name must match your CNIC exactly. If CNIC and passport names differ, you may need to update CNIC first (via NADRA) before renewing passport.
-      </p>
+      <h2 id="overseas">Overseas Pakistani passport renewal</h2>
+      <p>Apply online if eligible, or consult your Pakistani embassy/consulate for an in-person application. Confirm appointments, residence evidence, local payment and collection arrangements with that mission. Do not convert the Pakistan fee table into a mission quote yourself.</p>
+      <p>Warsaw’s current e-passport guidance requires personal attendance and residence evidence and quotes about 30 working days normal or 15 urgent, subject to receipt from Islamabad. These are Warsaw’s estimates, not a worldwide timetable. <a href={sources.warsaw}>Warsaw requirements and timelines</a>.</p>
+      <p>Loss, damage, exhausted pages and modification are separate application categories. DGIP offers additional online categories for overseas applicants, each with conditions and documents. Do not submit a lost passport as an ordinary renewal. <a href={sources.online}>Overseas categories</a>.</p>
 
-      <h3>Clearance Required</h3>
-      <p>
-        Certain cases require Ministry of Interior clearance (specific professions, previous legal issues, name changes). This adds 4–12 weeks to processing.
-      </p>
+      <h2 id="faq">Pakistani passport renewal FAQs</h2>
+      {questions.map(({ question, answer, source }) => <section><h3>{question}</h3><p>{answer} <a href={source}>Official source</a>.</p></section>)}
 
-      <h3>Expired Passport Used for Visa Application</h3>
-      <p>
-        If a visa (UK, US, Schengen) is stamped in a passport that then expires or you renew, the visa remains valid. Travel with both old (with visa) and new passport.
-      </p>
-
-      <h2>Related Resources</h2>
-      <p>
-        <a href="/tools/passport-validity-checker/">Passport Validity Checker</a> ·
-        <a href="/tools/visa-processing-time/">Visa Processing Times</a>
-      </p>
-    </section>
+      <h2>Plan your travel after renewal</h2>
+      <p>Review expiry dates with our <a href="/tools/passport-validity-checker/">passport validity checker</a>, then confirm your destination’s official entry rules. Prepare visa paperwork using the <a href="/tools/document-checklist-generator/">document checklist generator</a> and explore <a href="/tools/visa-processing-time/">visa processing estimates</a>. These tools do not confirm passport issuance.</p>
+      <h2>Official sources</h2>
+      <p>Checked on 14 November 2026. Where official pages conflict, this guide identifies the uncertainty. Recheck your chosen service before payment.</p>
+      <ul>
+        <li><a href={sources.requirements}>DGIP: documents, validity, renewal and e-passport fees</a></li>
+        <li><a href={sources.faq}>DGIP: online eligibility and FAQs</a></li>
+        <li><a href={sources.online}>DGIP: online applications and overseas categories</a></li>
+        <li><a href={sources.electronic}>DGIP: e-passport features and availability</a></li>
+        <li><a href={sources.process}>DGIP: application and collection process</a></li>
+        <li><a href={sources.fast}>DGIP: fast-track locations</a></li>
+        <li><a href={sources.warsaw}>Pakistan Ministry of Foreign Affairs: Warsaw e-passport notice</a></li>
+      </ul>
+    </div>
   </article>
 </BaseLayout>
+<style>
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-variant-numeric: tabular-nums; }
+  caption { text-align: left; font-weight: 600; padding-bottom: .5rem; }
+  th, td { padding: .65rem; text-align: left; border-bottom: 1px solid #d1d5db; }
+  thead { background: #f3f4f6; }
+  ol { list-style: decimal; padding-left: 1.5rem; margin: 1rem 0; }
+  li { line-height: 1.7; margin: .35rem 0; }
+  h2, h3 { scroll-margin-top: 6rem; }
+</style>
