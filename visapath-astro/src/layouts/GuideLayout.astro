@@ -1,0 +1,37 @@
+---
+import BaseLayout from './BaseLayout.astro';
+interface Props {
+  title: string;
+  description: string;
+  intro: string;
+  sections: { heading: string; paragraphs: string[]; source?: number }[];
+  sources: { title: string; url: string }[];
+}
+const { title, description, intro, sections, sources } = Astro.props;
+const canonical = new URL(Astro.url.pathname.replace(/\/?$/, '/'), Astro.site).href;
+const schema = {
+  '@context': 'https://schema.org', '@type': 'Article', headline: title,
+  description, mainEntityOfPage: canonical, datePublished: '2026-10-24', dateModified: '2026-11-14',
+  author: { '@type': 'Organization', name: 'VisaPath.pk', url: 'https://www.visapath.pk/about/' },
+  publisher: { '@type': 'Organization', name: 'Tech Traders' },
+  citation: sources.map(source => source.url),
+};
+---
+<BaseLayout title={title} description={description} canonical={canonical} schema={schema}>
+  <article class="max-w-3xl mx-auto px-4 py-10">
+    <nav aria-label="Breadcrumb" class="text-sm mb-4"><a href="/">Home</a> › <a href="/guides/">Guides</a></nav>
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">{title}</h1>
+    <p class="text-sm text-gray-600">Reviewed <time datetime="2026-11-14">14 November 2026</time> · <a href="/about/" class="underline">VisaPath.pk / Tech Traders</a></p>
+    <div class="prose max-w-none">
+      <p class="text-lg">{intro}</p>
+      <nav aria-label="On this page" class="bg-gray-50 rounded-lg p-4"><strong>In this guide</strong><ul>{sections.map((section, i) => <li><a href={`#section-${i}`}>{section.heading}</a></li>)}</ul></nav>
+      {sections.map((section, i) => <section><h2 id={`section-${i}`}>{section.heading}</h2>{section.paragraphs.map(paragraph => <p>{paragraph}</p>)}{section.source !== undefined && <p class="text-sm"><a href={sources[section.source].url}>Official source: {sources[section.source].title}</a></p>}</section>)}
+      <h2>Official sources and updates</h2>
+      <ul>{sources.map(source => <li><a href={source.url}>{source.title}</a></li>)}</ul>
+      <p>Requirements depend on your circumstances and can change. Confirm the current checklist and fees before paying. Report a correction to <a href="mailto:info@visapath.pk">info@visapath.pk</a>; read our <a href="/editorial-policy/">editorial policy</a>.</p>
+      <h2>Plan the next step</h2>
+      <p>Review <a href="/tools/visa-fee-calculator/">visa fees and official fee services</a>, check <a href="/tools/visa-processing-time/">official processing information</a>, and organise papers with the <a href="/tools/document-checklist-generator/">document checklist</a>. These tools do not replace the authority’s checklist or individual advice.</p>
+    </div>
+  </article>
+</BaseLayout>
+<style>h2 { scroll-margin-top: 6rem; }</style>

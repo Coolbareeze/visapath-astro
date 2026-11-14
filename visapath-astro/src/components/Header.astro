@@ -14,7 +14,7 @@ const nav = [
         <a href={i.href} class="text-gray-700 hover:text-brand-600 font-medium">{i.label}</a>
       ))}
     </nav>
-    <button class="md:hidden" aria-label="Menu" id="menu-btn">☰</button>
+    <button class="md:hidden" aria-label="Menu" aria-controls="mobile-nav" aria-expanded="false" id="menu-btn">☰</button>
   </div>
   <nav id="mobile-nav" class="hidden md:hidden border-t border-gray-200 px-4 py-3 space-y-2">
     {nav.map((i) => (
@@ -24,6 +24,8 @@ const nav = [
 </header>
 <script>
   document.getElementById('menu-btn')?.addEventListener('click', () => {
-    document.getElementById('mobile-nav')?.classList.toggle('hidden');
+    const nav = document.getElementById('mobile-nav');
+    nav?.classList.toggle('hidden');
+    document.getElementById('menu-btn')?.setAttribute('aria-expanded', String(!nav?.classList.contains('hidden')));
   });
 </script>

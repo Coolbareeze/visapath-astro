@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import { schengenDays } from '../../lib/travel-math.js';
 
 export default function SchengenCalculator() {
   const [trips, setTrips] = useState([{ entry: '', exit: '' }]);
@@ -13,44 +14,27 @@ export default function SchengenCalculator() {
   const add = () => setTrips([...trips, { entry: '', exit: '' }]);
   const remove = (i) => setTrips(trips.filter((_, idx) => idx !== i));
 
-  const result = useMemo(() => {
-    const check = new Date(checkDate);
-    if (isNaN(check)) return null;
-    const windowStart = new Date(check);
-    windowStart.setDate(windowStart.getDate() - 179);
-
-    let used = 0;
-    for (const t of trips) {
-      if (!t.entry || !t.exit) continue;
-      const entry = new Date(t.entry);
-      const exit = new Date(t.exit);
-      if (isNaN(entry) || isNaN(exit) || exit < entry) continue;
-      const effStart = entry < windowStart ? windowStart : entry;
-      const effEnd = exit > check ? check : exit;
-      if (effEnd < effStart) continue;
-      const days = Math.floor((effEnd - effStart) / 86400000) + 1;
-      used += days;
-    }
-    return { used, remaining: Math.max(0, 90 - used) };
-  }, [trips, checkDate]);
+  const result = useMemo(() => schengenDays(trips, checkDate), [trips, checkDate]);
 
   return (
     <div className="bg-white border border-gray-200 rounded-lg p-6">
       <div className="mb-6">
         <label className="block text-sm font-medium text-gray-700 mb-2">Check date</label>
         <input
+          aria-label="Check date"
           type="date"
           value={checkDate}
           onChange={(e) => setCheckDate(e.target.value)}
           className="border border-gray-300 rounded-lg px-3 py-2"
         />
-        <p className="text-xs text-gray-500 mt-1">Days used in the 180 days before this date</p>
+        <p className="text-xs text-gray-500 mt-1">Includes the check date and preceding 179 days; overlapping visits count once.</p>
       </div>
 
       <div className="space-y-3 mb-4">
         {trips.map((t, i) => (
           <div key={i} className="flex flex-wrap gap-2 items-center">
             <input
+              aria-label={`Trip ${i + 1} entry date`}
               type="date"
               value={t.entry}
               onChange={(e) => update(i, 'entry', e.target.value)}
@@ -58,13 +42,14 @@ export default function SchengenCalculator() {
             />
             <span className="text-gray-500">→</span>
             <input
+              aria-label={`Trip ${i + 1} exit date`}
               type="date"
               value={t.exit}
               onChange={(e) => update(i, 'exit', e.target.value)}
               className="border border-gray-300 rounded-lg px-3 py-2 flex-1 min-w-[140px]"
             />
             {trips.length > 1 && (
-              <button onClick={() => remove(i)} className="text-red-600 px-2">✕</button>
+              <button onClick={() => remove(i)} aria-label={`Remove trip ${i + 1}`} className="text-red-600 px-2">✕</button>
             )}
           </div>
         ))}
@@ -72,7 +57,8 @@ export default function SchengenCalculator() {
 
       <button onClick={add} className="text-brand-600 font-medium mb-6">+ Add trip</button>
 
-      {result && (
+      {result?.error && <p role="alert" className="text-red-700 mt-4">{result.error}</p>}
+      {result && !result.error && (
         <div className="bg-brand-50 border border-brand-500 rounded-lg p-5 mt-4">
           <div className="grid grid-cols-2 gap-4 text-center">
             <div>
@@ -81,12 +67,12 @@ export default function SchengenCalculator() {
             </div>
             <div>
               <div className="text-3xl font-bold text-green-600">{result.remaining}</div>
-              <div className="text-sm text-gray-600">Days remaining</div>
+              <div className="text-sm text-gray-600">Unused days on check date</div>
             </div>
           </div>
           {result.used > 90 && (
             <p className="text-red-600 text-sm mt-4 text-center font-medium">
-              ⚠ Overstay — exceeds 90 days in the 180-day window
+              The entered dates exceed 90 days in this window. Check your visa conditions and official guidance.
             </p>
           )}
         </div>
