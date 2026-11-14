@@ -1,101 +1,26 @@
 import { useState } from 'react';
-
-const DATA = {
-  UK: {
-    'Standard Visitor': { standard: '15 working days', priority: '5 working days (+£500)', super: '1 working day (+£1,000)' },
-    'Student': { standard: '3 weeks', priority: '5 working days (+£500)', super: '1 working day (+£1,000)' },
-    'Skilled Worker': { standard: '3 weeks', priority: '5 working days (+£500)', super: '1 working day (+£1,000)' },
-    'Family / Settlement': { standard: '12 weeks (up to 24 weeks)', priority: '30 working days (+£573)', super: '5 working days (+£1,019)' },
-  },
-  USA: {
-    'B1/B2 Interview': { standard: 'Varies by post — weeks to over a year wait', priority: 'Expedite request possible for medical/business emergency', super: 'N/A' },
-    'F1 Student': { standard: '2–4 weeks after interview', priority: 'N/A', super: 'N/A' },
-    'H1B': { standard: '2–6 months', priority: 'Premium Processing: 15 days (+$2,805)', super: 'N/A' },
-    'Interview Waiver (Dropbox)': { standard: '3–6 weeks', priority: 'N/A', super: 'N/A' },
-  },
-  Canada: {
-    'Visitor Visa (TRV)': { standard: '4–8 weeks', priority: 'N/A', super: 'N/A' },
-    'Study Permit': { standard: '8–12 weeks', priority: 'SDS stream: 20 calendar days (if eligible)', super: 'N/A' },
-    'Work Permit': { standard: '8–16 weeks', priority: 'Global Talent Stream: 2 weeks (for sponsors)', super: 'N/A' },
-    'Super Visa': { standard: '4–10 weeks', priority: 'N/A', super: 'N/A' },
-  },
-  Schengen: {
-    'Short-stay (Type C)': { standard: '15 calendar days', priority: 'Extended to 45 days in complex cases', super: 'N/A' },
-    'National (Type D)': { standard: 'Varies 1–3 months by country', priority: 'N/A', super: 'N/A' },
-  },
-  UAE: {
-    'Tourist e-Visa': { standard: '3–5 working days', priority: '24 hours (urgent service)', super: 'N/A' },
-  },
-  Turkey: {
-    'e-Visa': { standard: 'Minutes to 24 hours', priority: 'N/A', super: 'N/A' },
-  },
-  'Saudi Arabia': {
-    'Tourist e-Visa': { standard: '1–3 working days', priority: 'Same day in some cases', super: 'N/A' },
-    'Umrah Visa': { standard: '2–7 working days via agent', priority: 'N/A', super: 'N/A' },
-  },
-  Thailand: {
-    'Tourist (TR)': { standard: '5–10 working days', priority: 'N/A', super: 'N/A' },
-    'Visa Exempt / VOA': { standard: 'On arrival', priority: 'N/A', super: 'N/A' },
-  },
-  Malaysia: {
-    'eVISA': { standard: '2–3 working days', priority: 'Expedited possible via agent', super: 'N/A' },
-  },
-};
-
+const entries = [
+  ['UK — visit, study, work and family', 'Check the current outside-UK table for your exact route. Separate appointment availability, decision time and passport return. Faster services depend on the application route and availability.', 'https://www.gov.uk/guidance/visa-processing-times-applications-outside-the-uk'],
+  ['USA — nonimmigrant visas', 'Look up the consular post and visa category. Interview wait estimates are not a promise of a slot or a visa decision. Administrative processing is additional.', 'https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/global-visa-wait-times.html'],
+  ['Canada — temporary residence', 'Use IRCC’s live tool with your application category and country. Do not use an old Pakistan-wide estimate. The Student Direct Stream ended on 8 November 2024.', 'https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html'],
+  ['Schengen — short stay', 'The European Commission gives a normal decision time of 15 days, which may extend to 45 days. Appointment waits and passport return add time. Premium application-centre services do not guarantee a faster decision.', 'https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en'],
+  ['Australia — visitor and other visas', 'Use the official processing guide for the visa subclass and stream. Its historical figures do not guarantee the time for a new application.', 'https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-processing-times/global-visa-processing-times'],
+  ['UAE — visit visas', 'Confirm the processing channel with the relevant immigration authority or authorised sponsor. No universal urgent timeline is quoted here.', 'https://u.ae/en/information-and-services/visa-and-emirates-id/visit-visas'],
+  ['Türkiye — e-Visa or sticker visa', 'First establish whether you qualify for an e-Visa. Check the official portal or responsible mission for your route; a quick online application is not a guarantee of entry.', 'https://www.evisa.gov.tr/'],
+  ['Thailand — e-Visa', 'Check the mission responsible for your place of residence and the application portal. Additional evidence can change the timeline.', 'https://www.thaievisa.go.th/'],
+  ['Malaysia — eVISA', 'Use Immigration’s portal to check the current service. Requests for extra documents or an interview can add time.', 'https://malaysiavisa.imi.gov.my/'],
+  ['Saudi Arabia — visit / Umrah', 'Use the official visa service for your nationality and purpose, and confirm any seasonal restrictions. A package purchase is not visa approval.', 'https://ksavisa.sa/'],
+];
 export default function ProcessingTimeLookup() {
-  const [country, setCountry] = useState('UK');
-  const [visaType, setVisaType] = useState('Standard Visitor');
-
-  const countries = Object.keys(DATA);
-  const visaTypes = Object.keys(DATA[country]);
-  const info = DATA[country][visaType] || DATA[country][visaTypes[0]];
-
-  const onCountryChange = (c) => {
-    setCountry(c);
-    setVisaType(Object.keys(DATA[c])[0]);
-  };
-
-  return (
-    <div className="bg-white border border-gray-200 rounded-lg p-6">
-      <div className="grid md:grid-cols-2 gap-4 mb-6">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Country</label>
-          <select value={country} onChange={(e) => onCountryChange(e.target.value)}
-                  className="border border-gray-300 rounded-lg px-3 py-2 w-full">
-            {countries.map((c) => <option key={c} value={c}>{c}</option>)}
-          </select>
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Visa Type</label>
-          <select value={visaType} onChange={(e) => setVisaType(e.target.value)}
-                  className="border border-gray-300 rounded-lg px-3 py-2 w-full">
-            {visaTypes.map((t) => <option key={t} value={t}>{t}</option>)}
-          </select>
-        </div>
-      </div>
-
-      <div className="space-y-3">
-        <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-          <div className="text-sm font-medium text-gray-500 mb-1">Standard</div>
-          <div className="text-lg font-semibold text-gray-900">{info.standard}</div>
-        </div>
-        {info.priority !== 'N/A' && (
-          <div className="bg-brand-50 border border-brand-500 rounded-lg p-4">
-            <div className="text-sm font-medium text-brand-600 mb-1">Priority</div>
-            <div className="text-lg font-semibold text-gray-900">{info.priority}</div>
-          </div>
-        )}
-        {info.super !== 'N/A' && (
-          <div className="bg-green-50 border border-green-500 rounded-lg p-4">
-            <div className="text-sm font-medium text-green-700 mb-1">Super Priority</div>
-            <div className="text-lg font-semibold text-gray-900">{info.super}</div>
-          </div>
-        )}
-      </div>
-
-      <p className="text-xs text-gray-500 mt-4 text-center">
-        Processing times are estimates and vary based on application volume and completeness. Submit well ahead of travel.
-      </p>
-    </div>
-  );
+  const [selected, setSelected] = useState(0);
+  const [name, note, href] = entries[selected];
+  return <div className="border rounded-lg p-6">
+    <label className="block font-medium">Destination and route
+      <select className="block border rounded-lg px-3 py-2 w-full mt-2" value={selected} onChange={e => setSelected(Number(e.target.value))}>
+        {entries.map(([label], i) => <option key={label} value={i}>{label}</option>)}
+      </select>
+    </label>
+    <div className="bg-gray-50 rounded-lg p-5 mt-5" aria-live="polite"><h2 className="font-bold text-lg">{name}</h2><p className="my-3">{note}</p><a className="text-brand-600 underline" href={href}>Open the official processing information</a></div>
+    <p className="text-sm text-gray-600 mt-4">Official links reviewed 14 November 2026. Check the live source each time you plan an application. VisaPath does not predict an individual decision date.</p>
+  </div>;
 }

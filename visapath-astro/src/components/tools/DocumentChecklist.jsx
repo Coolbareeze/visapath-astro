@@ -1,117 +1,106 @@
 import { useState } from 'react';
 
+const SOURCES = {
+  "UK Visitor Visa": "https://www.gov.uk/standard-visitor",
+  "US B1/B2 Visa": "https://travel.state.gov/content/travel/en/us-visas/tourism-visit/visitor.html",
+  "Schengen Tourist Visa": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+  "Canada Visitor Visa": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html",
+  "UAE Tourist Visa": "https://u.ae/en/information-and-services/visa-and-emirates-id/visit-visas",
+  "Turkey e-Visa": "https://www.evisa.gov.tr/",
+  "Thailand Tourist Visa": "https://www.thaievisa.go.th/"
+};
 const CHECKLISTS = {
-  'UK Visitor Visa': [
-    'Passport valid for the entire planned stay with 1 blank page',
-    'Previous passports (if any)',
-    'Confirmation of online application (VAF)',
-    'Visa fee payment confirmation',
-    'IHS payment confirmation (if applicable)',
-    'Appointment confirmation at UKVCAS/VFS',
-    'Recent passport-size photographs (meeting UKVI specification)',
-    'Bank statements — 6 months, personal account',
-    'Salary slips — 6 months',
-    'Employment letter stating position, salary, leave approval',
-    'Business documents (if self-employed): SECP certificate, NTN, tax returns',
-    'Property documents (if applicable)',
-    'Hotel bookings covering full stay',
-    'Return flight itinerary (hold, not purchased)',
-    'Day-by-day travel itinerary',
-    'Invitation letter from UK host (if visiting family/friends)',
-    'Host\'s UK passport/BRP/driving licence copy',
-    'Host\'s council tax bill or utility bill',
-    'Host\'s bank statements (if sponsoring)',
-    'CNIC original and copy',
-    'Family registration certificate (FRC)',
-    'Marriage certificate (if applicable)',
-    'Children\'s birth certificates (if traveling with family)',
-    'Travel insurance (recommended, not mandatory)',
+  "UK Visitor Visa": [
+    "Check that the evidence supports a genuine temporary visit; follow the generated document list",
+    "Read the official checklist for nationality, residence and application purpose",
+    "Check passport details, validity and any blank-page requirement",
+    "Complete the current application and save its confirmation",
+    "Prepare the photo / identity evidence requested by the official service",
+    "Explain travel purpose, itinerary, accommodation and payer where requested",
+    "Prepare relevant financial and circumstance evidence in the required format",
+    "Check translation, consent and family-document requirements for your case",
+    "Confirm current fees and keep receipts",
+    "Follow the identity / biometric appointment instructions actually issued",
+    "Save the submitted file and monitor requests and deadlines"
   ],
-  'US B1/B2 Visa': [
-    'Passport valid for 6+ months beyond intended stay',
-    'DS-160 confirmation page with barcode',
-    'MRV fee receipt ($185)',
-    'Interview appointment letter',
-    'Recent passport photo (2x2 inches, white background, 6 months old or newer)',
-    'Previous US visas (if any)',
-    'Bank statements — 6 months with closing balance',
-    'Property documents to show ties to Pakistan',
-    'Business registration (if self-employed)',
-    'Salary slips and employment letter',
-    'Tax returns — last 2 years',
-    'Family details: spouse, children, parents documents',
-    'Marriage certificate (if applicable)',
-    'Invitation letter from US host (if applicable)',
-    'Host\'s I-94, visa status, or green card copy',
-    'Travel itinerary (not required but helpful)',
-    'Previous travel history evidence (visa pages, stamps)',
+  "US B1/B2 Visa": [
+    "Keep DS-160 confirmation and interview instructions together; an invitation is not a substitute for qualifying",
+    "Read the official checklist for nationality, residence and application purpose",
+    "Check passport details, validity and any blank-page requirement",
+    "Complete the current application and save its confirmation",
+    "Prepare the photo / identity evidence requested by the official service",
+    "Explain travel purpose, itinerary, accommodation and payer where requested",
+    "Prepare relevant financial and circumstance evidence in the required format",
+    "Check translation, consent and family-document requirements for your case",
+    "Confirm current fees and keep receipts",
+    "Follow the identity / biometric appointment instructions actually issued",
+    "Save the submitted file and monitor requests and deadlines"
   ],
-  'Schengen Tourist Visa': [
-    'Passport valid for 3 months beyond return, issued within last 10 years, with 2 blank pages',
-    'Completed Schengen visa application form (signed)',
-    '2 recent biometric photos (35x45mm, white background)',
-    'Visa fee €90 (adults)',
-    'Round-trip flight reservation (not purchased ticket)',
-    'Hotel bookings for entire stay',
-    'Travel insurance with €30,000 medical coverage valid in all Schengen states',
-    'Cover letter stating purpose, itinerary, who pays',
-    'Day-by-day itinerary with places visited',
-    'Bank statements — last 3 months with stamp',
-    'Salary slips — last 3 months',
-    'Employment letter (NOC, salary, position, leave dates)',
-    'Business documents if self-employed (SECP, NTN, tax returns)',
-    'Property documents (if applicable)',
-    'Previous Schengen visas (if any)',
-    'CNIC copy',
-    'Family registration certificate (FRC)',
-    'Children\'s birth certificates (if under 18 traveling)',
-    'Consent letter from parent(s) if minor travels alone or with one parent',
-    'Marriage certificate (if applicable)',
+  "Schengen Tourist Visa": [
+    "Confirm the responsible consulate from your genuine itinerary and check insurance requirements",
+    "Read the official checklist for nationality, residence and application purpose",
+    "Check passport details, validity and any blank-page requirement",
+    "Complete the current application and save its confirmation",
+    "Prepare the photo / identity evidence requested by the official service",
+    "Explain travel purpose, itinerary, accommodation and payer where requested",
+    "Prepare relevant financial and circumstance evidence in the required format",
+    "Check translation, consent and family-document requirements for your case",
+    "Confirm current fees and keep receipts",
+    "Follow the identity / biometric appointment instructions actually issued",
+    "Save the submitted file and monitor requests and deadlines"
   ],
-  'Canada Visitor Visa': [
-    'Passport valid for duration of stay',
-    'Previous passports',
-    'IMM 5257 application form (signed)',
-    'Biometric fee receipt (CAD $85)',
-    'Visa fee receipt (CAD $100)',
-    'Family Information form (IMM 5645)',
-    '2 recent passport photos (per Canadian spec)',
-    'Letter of invitation from Canadian host (if any) + their status proof',
-    'Bank statements — 4 months',
-    'Property documents',
-    'Employment letter / business documents',
-    'Tax returns — 2 years',
-    'CNIC + FRC',
-    'Marriage certificate (if applicable)',
-    'Travel itinerary and hotel bookings',
-    'Travel insurance (recommended)',
+  "Canada Visitor Visa": [
+    "Use the document list for the application route supplied by IRCC; follow any biometric request",
+    "Read the official checklist for nationality, residence and application purpose",
+    "Check passport details, validity and any blank-page requirement",
+    "Complete the current application and save its confirmation",
+    "Prepare the photo / identity evidence requested by the official service",
+    "Explain travel purpose, itinerary, accommodation and payer where requested",
+    "Prepare relevant financial and circumstance evidence in the required format",
+    "Check translation, consent and family-document requirements for your case",
+    "Confirm current fees and keep receipts",
+    "Follow the identity / biometric appointment instructions actually issued",
+    "Save the submitted file and monitor requests and deadlines"
   ],
-  'UAE Tourist Visa': [
-    'Passport scan (color) valid 6+ months',
-    'Recent photograph (passport style, white background)',
-    'Confirmed return flight ticket',
-    'Hotel booking or UAE address',
-    'Bank statement — last 3 months',
-    'Travel insurance (recommended)',
-    'Sponsor documents if applied through airline/hotel',
+  "UAE Tourist Visa": [
+    "Identify the sponsor / submitting channel and request an itemised fee and service quote",
+    "Read the official checklist for nationality, residence and application purpose",
+    "Check passport details, validity and any blank-page requirement",
+    "Complete the current application and save its confirmation",
+    "Prepare the photo / identity evidence requested by the official service",
+    "Explain travel purpose, itinerary, accommodation and payer where requested",
+    "Prepare relevant financial and circumstance evidence in the required format",
+    "Check translation, consent and family-document requirements for your case",
+    "Confirm current fees and keep receipts",
+    "Follow the identity / biometric appointment instructions actually issued",
+    "Save the submitted file and monitor requests and deadlines"
   ],
-  'Turkey e-Visa': [
-    'Passport valid 6+ months with 1 blank page',
-    'Completed online e-Visa application',
-    'Visa fee payment ($60)',
-    'Printed e-Visa (carry on arrival)',
-    'Return flight ticket (recommended)',
-    'Hotel booking (recommended)',
+  "Turkey e-Visa": [
+    "Read every supporting-visa/residence and other eligibility condition before payment",
+    "Read the official checklist for nationality, residence and application purpose",
+    "Check passport details, validity and any blank-page requirement",
+    "Complete the current application and save its confirmation",
+    "Prepare the photo / identity evidence requested by the official service",
+    "Explain travel purpose, itinerary, accommodation and payer where requested",
+    "Prepare relevant financial and circumstance evidence in the required format",
+    "Check translation, consent and family-document requirements for your case",
+    "Confirm current fees and keep receipts",
+    "Follow the identity / biometric appointment instructions actually issued",
+    "Save the submitted file and monitor requests and deadlines"
   ],
-  'Thailand Tourist Visa': [
-    'Passport valid 6+ months with 2 blank pages',
-    'Completed TM-87 application form',
-    'Recent 4x6cm photograph',
-    'Confirmed flight tickets (in and out)',
-    'Hotel booking or Thai address',
-    'Bank statement showing 20,000 THB per person',
-    'Employment letter',
-  ],
+  "Thailand Tourist Visa": [
+    "Follow the mission identified by the official portal for your location and residence",
+    "Read the official checklist for nationality, residence and application purpose",
+    "Check passport details, validity and any blank-page requirement",
+    "Complete the current application and save its confirmation",
+    "Prepare the photo / identity evidence requested by the official service",
+    "Explain travel purpose, itinerary, accommodation and payer where requested",
+    "Prepare relevant financial and circumstance evidence in the required format",
+    "Check translation, consent and family-document requirements for your case",
+    "Confirm current fees and keep receipts",
+    "Follow the identity / biometric appointment instructions actually issued",
+    "Save the submitted file and monitor requests and deadlines"
+  ]
 };
 
 export default function DocumentChecklist() {
@@ -134,9 +123,10 @@ export default function DocumentChecklist() {
 
   return (
     <div className="bg-white border border-gray-200 rounded-lg p-6">
+      <p className="text-sm mb-5">Preparation checklist, not an official document list. Tick marks track your work only; 100% does not mean eligibility or approval. <a className="underline text-brand-600" href={SOURCES[visa]}>Open the official route checklist</a>.</p>
       <div className="mb-6">
         <label className="block text-sm font-medium text-gray-700 mb-2">Visa Type</label>
-        <select value={visa} onChange={(e) => setVisa(e.target.value)}
+        <select aria-label="Visa Type" value={visa} onChange={(e) => setVisa(e.target.value)}
                 className="border border-gray-300 rounded-lg px-3 py-2 w-full md:w-auto">
           {Object.keys(CHECKLISTS).map((v) => <option key={v} value={v}>{v}</option>)}
         </select>
@@ -159,12 +149,12 @@ export default function DocumentChecklist() {
       <ul className="space-y-2">
         {items.map((item, i) => (
           <li key={i} className="flex items-start gap-3 p-3 hover:bg-gray-50 rounded-lg cursor-pointer"
-              onClick={() => toggle(i)}>
-            <input type="checkbox" checked={!!checked[key(i)]} onChange={() => toggle(i)}
+              >
+            <label className="flex gap-3 cursor-pointer"><input type="checkbox" checked={!!checked[key(i)]} onChange={() => toggle(i)}
                    className="mt-1 w-5 h-5 accent-brand-600" />
             <span className={checked[key(i)] ? 'line-through text-gray-400' : 'text-gray-800'}>
               {item}
-            </span>
+            </span></label>
           </li>
         ))}
       </ul>

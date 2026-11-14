@@ -1,0 +1,59 @@
+<button type="button" id="privacy-settings" class="underline text-sm">Privacy choices</button>
+<section id="privacy-banner" aria-label="Analytics privacy choices" class="hidden fixed bottom-0 inset-x-0 z-[60] border-t bg-white shadow-lg p-4">
+  <div class="max-w-5xl mx-auto flex flex-wrap gap-4 items-center">
+    <p class="flex-1 min-w-[220px] text-sm">We use essential browser storage to remember your privacy choice. Optional Google Analytics helps us understand site usage. <a href="/privacy/" class="underline text-brand-600">Privacy policy</a>.</p>
+    <button type="button" id="analytics-reject" class="border rounded px-4 py-2">Reject analytics</button>
+    <button type="button" id="analytics-accept" class="border rounded px-4 py-2">Accept analytics</button>
+  </div>
+</section>
+<script>
+  const KEY = 'visapath-analytics-choice-v1';
+  const ID = 'G-79HGR3VLZQ';
+  const w = window as Window & { dataLayer?: unknown[]; gtag?: (...args: unknown[]) => void; [key: string]: unknown };
+  const banner = document.getElementById('privacy-banner');
+  function choice(): boolean {
+    try {
+      const saved = JSON.parse(localStorage.getItem(KEY) || 'null');
+      if (saved && ['accepted', 'rejected'].includes(saved.value) && Number.isFinite(saved.time) && Date.now() - saved.time < 180 * 86400000) {
+        return saved.value === 'accepted';
+      }
+    } catch { /* Unavailable storage leaves optional analytics disabled. */ }
+    banner?.classList.remove('hidden');
+    return false;
+  }
+  function enable() {
+    w[`ga-disable-${ID}`] = false;
+    if (document.getElementById('optional-analytics')) return;
+    w.dataLayer = w.dataLayer || [];
+    w.gtag = function () { w.dataLayer?.push(arguments); };
+    w.gtag('js', new Date());
+    w.gtag('config', ID);
+    const script = document.createElement('script');
+    script.id = 'optional-analytics';
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${ID}`;
+    document.head.appendChild(script);
+  }
+  function disable() {
+    w[`ga-disable-${ID}`] = true;
+    for (const cookie of document.cookie.split(';')) {
+      const name = cookie.split('=')[0].trim();
+      if (!name.startsWith('_ga') && !name.startsWith('_gid') && !name.startsWith('_gat')) continue;
+      const parts = location.hostname.split('.');
+      document.cookie = `${name}=; Max-Age=0; path=/`;
+      for (let i = 0; i < parts.length - 1; i++) document.cookie = `${name}=; Max-Age=0; path=/; domain=.${parts.slice(i).join('.')}`;
+    }
+  }
+  function save(value: 'accepted' | 'rejected') {
+    try { localStorage.setItem(KEY, JSON.stringify({ value, time: Date.now() })); } catch { /* Apply for this page even when storage is blocked. */ }
+    if (value === 'accepted') enable(); else disable();
+    banner?.classList.add('hidden');
+  }
+  if (choice()) enable(); else disable();
+  document.getElementById('analytics-accept')?.addEventListener('click', () => save('accepted'));
+  document.getElementById('analytics-reject')?.addEventListener('click', () => save('rejected'));
+  document.getElementById('privacy-settings')?.addEventListener('click', () => {
+    banner?.classList.remove('hidden');
+    document.getElementById('analytics-reject')?.focus();
+  });
+</script>
