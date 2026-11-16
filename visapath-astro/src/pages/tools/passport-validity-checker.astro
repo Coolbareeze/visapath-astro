@@ -2,4 +2,25 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PassportValidityChecker from '../../components/tools/PassportValidityChecker.jsx';
 ---
-<BaseLayout title="Passport Validity Checker: Expiry & Travel-Date Comparison" description="Compare passport expiry with sourced UK and Schengen date rules or your own verified destination buffer. Check the correct arrival or departure anchor."><article class="max-w-3xl mx-auto px-4 py-10"><h1 class="text-3xl font-bold mb-4">Passport Validity Checker</h1><p class="mb-8">Compare expiry against the correct anchor date. A date comparison does not establish that you can board or enter a destination.</p><PassportValidityChecker client:load /><section class="prose max-w-none mt-10"><h2>Use departure for these two rules</h2><p>The UK visitor rule requires a passport valid for the full stay. Schengen’s general application guidance requires expiry at least three months beyond planned departure. Enter the date you plan to leave that destination, not the date you fly out of Pakistan.</p><h2>Other destinations</h2><p>Confirm the required validity and whether it runs from arrival or departure through the destination’s official authority and your carrier. Choose the custom mode and enter that verified anchor and buffer. There is no universal six-month rule for every nationality, destination and visa route.</p><h2>What this does not check</h2><p>Confirm passport issue-date limits, blank pages, visa validity, transit rules and identity details separately. The result only compares the dates entered, using calendar months with month-end dates clamped to the final day of the target month. It does not verify a passport’s authenticity or legal status.</p><h2>When renewal is needed</h2><p>Review our <a href="/guides/pakistan-passport-renewal/">sourced Pakistani passport renewal guide</a> for DGIP fees, online eligibility and processing uncertainty. Leave time for checks and delivery; do not rely on a promise of 24-hour urgent renewal.</p></section></article></BaseLayout>
+<BaseLayout
+  title="Passport Validity Checker: Is Your Passport Ready for Travel?"
+  description="Check if your passport has enough time left for a UK or Schengen trip. Enter your travel and expiry dates, or check another country's official rule."
+>
+  <article class="max-w-3xl mx-auto px-4 py-10">
+    <h1 class="text-3xl font-bold mb-4">Passport Validity Checker</h1>
+    <p class="mb-8">Will your passport expire too soon for your trip? Choose where you are going and enter your dates to check.</p>
+    <PassportValidityChecker client:load />
+    <section class="prose max-w-none mt-10">
+      <h2>Which travel date should I enter?</h2>
+      <p>For the UK or Schengen countries, enter the date you plan to leave that destination. For example, if you visit France and then return to Pakistan, use the date you leave France.</p>
+      <p>For a UK visit, your passport must stay valid for the whole stay. For a Schengen visa, it must usually stay valid for at least three months after you leave the Schengen area.</p>
+      <h2>Travelling to another country?</h2>
+      <p>Check the embassy or official visa website first. Find out how long your passport must stay valid and whether the months are counted from arrival or departure. Choose “Another country” and enter those details. Requirements vary by country, nationality and visa type.</p>
+      <h2>What else should I check?</h2>
+      <p>Check that you have the right visa, enough spare passport pages and a passport that meets any rules about when it was issued. Also check the rules for countries you pass through. Confirm the full requirements with your embassy and airline.</p>
+      <p>The checker counts whole calendar months. If the matching date falls beyond the end of a month, it uses that month's last day.</p>
+      <h2>Need to renew your passport?</h2>
+      <p>Read our <a href="/guides/pakistan-passport-renewal/">Pakistani passport renewal guide</a> for official fees and how to apply. Allow time for document checks and delivery.</p>
+    </section>
+  </article>
+</BaseLayout>
