@@ -1,4 +1,4 @@
-export const checked = '14 November 2026';
+export const checked = '16 November 2026';
 export const visaFees = [
   { country: 'UK', type: 'Standard Visitor (up to 6 months)', amount: 135, currency: 'GBP', source: 'https://www.gov.uk/standard-visitor', note: 'Base application fee; optional services are separate.' },
   { country: 'UK', type: 'Student (outside the UK)', amount: 558, currency: 'GBP', source: 'https://www.gov.uk/student-visa', note: 'Healthcare surcharge and optional services are separate.' },
