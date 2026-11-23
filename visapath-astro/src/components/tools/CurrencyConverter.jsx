@@ -35,6 +35,14 @@ export default function CurrencyConverter() {
 
   return (
     <div className="bg-white border border-gray-200 rounded-lg p-6">
+      <div className="mb-6">
+        <button type="button"
+          onClick={() => { setAmount(10000); setFrom('USD'); setTo('PKR'); }}
+          className="border border-brand-600 text-brand-600 rounded-lg px-4 py-3 font-medium hover:bg-brand-50">
+          Convert USD 10,000 to PKR
+        </button>
+        <p className="text-sm text-gray-600 mt-2">Sets the amount and currencies below. You can change them anytime.</p>
+      </div>
       <div className="mb-4">
         <label className="block text-sm font-medium text-gray-700 mb-2">Amount</label>
         <input type="number" value={amount} onChange={(e) => setAmount(Number(e.target.value) || 0)}
